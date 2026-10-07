@@ -26,6 +26,7 @@ from utils.dataloader import (
     make_dataloaders,
     segment_words,
 )
+from utils.loss_function import ClassificationLoss
 
 
 @dataclass
@@ -46,6 +47,12 @@ class Config:
     monitor: str = "f1"  # validation metric for checkpoint selection; "loss" is minimised
     rdrop_alpha: float = 0.0  # > 0 enables R-Drop (doubles the training time)
     layer_decay: float = 1.0  # < 1 lowers the learning rate layer by layer towards the embeddings
+    # loss variants, see utils.loss_function.ClassificationLoss (all off = weighted cross-entropy)
+    label_smoothing: float = 0.0
+    focal_gamma: float = 0.0
+    gce_q: float = 0.0
+    supcon_weight: float = 0.0
+    supcon_temperature: float = 0.3
     num_workers: int = 2
     seed: int = 42
     limit: int = 0  # use only the first N rows of each split (smoke tests)
@@ -56,6 +63,25 @@ def set_seed(seed: int) -> None:
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
+
+
+def build_criterion(cfg: Config, weights: torch.Tensor | None):
+    """(training loss, evaluation loss) for the loss options in `cfg`, or (None, None).
+
+    Validation and test loss always use plain weighted cross-entropy, so checkpoint
+    selection and reported losses are comparable across training losses.
+    """
+    if not (cfg.label_smoothing or cfg.focal_gamma or cfg.gce_q or cfg.supcon_weight):
+        return None, None
+    criterion = ClassificationLoss(
+        weights,
+        label_smoothing=cfg.label_smoothing,
+        gamma=cfg.focal_gamma,
+        gce_q=cfg.gce_q,
+        supcon_weight=cfg.supcon_weight,
+        supcon_temperature=cfg.supcon_temperature,
+    )
+    return criterion, ClassificationLoss(weights)
 
 
 def run(cfg: Config) -> dict:
@@ -85,7 +111,11 @@ def run(cfg: Config) -> dict:
         use_image=False,
         num_workers=cfg.num_workers,
     )
-    model = PhoBERTClassifier(cfg.model_name, dropout=cfg.dropout)
+    model = PhoBERTClassifier(
+        cfg.model_name, dropout=cfg.dropout, return_features=cfg.supcon_weight > 0
+    )
+    weights = class_weights(splits["train"]) if cfg.weighted_loss else None
+    criterion, eval_criterion = build_criterion(cfg, weights)
     trainer = Trainer(
         model,
         loaders["train"],
@@ -95,7 +125,9 @@ def run(cfg: Config) -> dict:
         lr=cfg.lr,
         weight_decay=cfg.weight_decay,
         warmup_ratio=cfg.warmup_ratio,
-        class_weights=class_weights(splits["train"]) if cfg.weighted_loss else None,
+        class_weights=weights,
+        criterion=criterion,
+        eval_criterion=eval_criterion,
         patience=cfg.patience,
         monitor=cfg.monitor,
         rdrop_alpha=cfg.rdrop_alpha,

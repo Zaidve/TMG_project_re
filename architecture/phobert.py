@@ -28,6 +28,7 @@ class PhoBERTClassifier(nn.Module):
         num_labels: int = 2,
         dropout: float = 0.1,
         encoder: nn.Module | None = None,
+        return_features: bool = False,
     ):
         super().__init__()
         self.encoder = encoder if encoder is not None else AutoModel.from_pretrained(
@@ -36,6 +37,8 @@ class PhoBERTClassifier(nn.Module):
         self.hidden_size = self.encoder.config.hidden_size
         self.dropout = nn.Dropout(dropout)
         self.classifier = nn.Linear(self.hidden_size, num_labels)
+        # also return the pooled feature, for losses that act on it (supervised contrastive)
+        self.return_features = return_features
 
     def encode(self, input_ids: torch.Tensor, attention_mask: torch.Tensor) -> torch.Tensor:
         out = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
@@ -43,5 +46,9 @@ class PhoBERTClassifier(nn.Module):
 
     def forward(
         self, input_ids: torch.Tensor, attention_mask: torch.Tensor, **_
-    ) -> torch.Tensor:
-        return self.classifier(self.dropout(self.encode(input_ids, attention_mask)))
+    ) -> torch.Tensor | dict:
+        features = self.encode(input_ids, attention_mask)
+        logits = self.classifier(self.dropout(features))
+        if self.return_features:
+            return {"logits": logits, "features": features}
+        return logits

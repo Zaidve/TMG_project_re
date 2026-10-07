@@ -22,7 +22,7 @@ import torch
 import transformers
 
 from architecture.phobert import PhoBERTClassifier, load_tokenizer
-from trainer.train_phobert import Config, parse_config, set_seed
+from trainer.train_phobert import Config, build_criterion, parse_config, set_seed
 from trainer.trainer import Trainer, classification_metrics
 from utils.dataloader import (
     ID2LABEL,
@@ -51,7 +51,9 @@ def phobert_setup(cfg: CVConfig, pool: pd.DataFrame, test: pd.DataFrame):
     """Tokenizer, model factory and extra Trainer arguments for the plain PhoBERT run."""
     return (
         load_tokenizer(cfg.model_name),
-        lambda: PhoBERTClassifier(cfg.model_name, dropout=cfg.dropout),
+        lambda: PhoBERTClassifier(
+            cfg.model_name, dropout=cfg.dropout, return_features=cfg.supcon_weight > 0
+        ),
         {},
     )
 
@@ -99,6 +101,8 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
             use_image=False,
             num_workers=cfg.num_workers,
         )
+        weights = class_weights(splits["train"]) if cfg.weighted_loss else None
+        criterion, eval_criterion = build_criterion(cfg, weights)
         trainer = Trainer(
             make_model(),
             loaders["train"],
@@ -108,7 +112,9 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
             lr=cfg.lr,
             weight_decay=cfg.weight_decay,
             warmup_ratio=cfg.warmup_ratio,
-            class_weights=class_weights(splits["train"]) if cfg.weighted_loss else None,
+            class_weights=weights,
+            criterion=criterion,
+            eval_criterion=eval_criterion,
             patience=cfg.patience,
             monitor=cfg.monitor,
             rdrop_alpha=cfg.rdrop_alpha,

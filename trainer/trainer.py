@@ -104,6 +104,7 @@ class Trainer:
         warmup_ratio: float = 0.1,
         class_weights: torch.Tensor | None = None,
         criterion: nn.Module | None = None,
+        eval_criterion: nn.Module | None = None,
         grad_clip: float = 1.0,
         patience: int = 3,
         monitor: str = "f1",
@@ -136,6 +137,9 @@ class Trainer:
         self.scaler = torch.amp.GradScaler(self.device.type, enabled=self.amp)
         # default: class-weighted cross-entropy; pass e.g. a FusionLoss to override
         self.criterion = (criterion or nn.CrossEntropyLoss(weight=class_weights)).to(self.device)
+        # loss reported on val/test (and used when monitor="loss"); keeping it fixed makes
+        # runs with different training losses comparable
+        self.eval_criterion = (eval_criterion or self.criterion).to(self.device)
         self.history: list[dict] = []
         self.best_path = self.out_dir / "best.pt"
 
@@ -196,7 +200,7 @@ class Trainer:
         ids, labels_all, probs_all, total = [], [], [], 0.0
         for batch in loader:
             outputs, labels = self._forward(batch)
-            total += self.criterion(outputs, labels).item() * len(labels)
+            total += self.eval_criterion(outputs, labels).item() * len(labels)
             logits = outputs["logits"] if isinstance(outputs, dict) else outputs
             ids.extend(batch["id"])
             labels_all.append(labels.cpu().numpy())
