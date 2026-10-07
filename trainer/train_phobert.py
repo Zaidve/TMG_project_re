@@ -119,12 +119,17 @@ def run(cfg: Config) -> dict:
     }
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    for name, default in asdict(Config()).items():
+def parse_config(config_cls, description: str):
+    """Build a config from command-line flags, one flag per dataclass field."""
+    parser = argparse.ArgumentParser(description=description)
+    for name, default in asdict(config_cls()).items():
         flag = "--" + name.replace("_", "-")
         if isinstance(default, bool):
             parser.add_argument(flag, action=argparse.BooleanOptionalAction, default=default)
         else:
             parser.add_argument(flag, type=type(default), default=default)
-    run(Config(**vars(parser.parse_args())))
+    return config_cls(**vars(parser.parse_args()))
+
+
+if __name__ == "__main__":
+    run(parse_config(Config, __doc__.strip().splitlines()[0]))

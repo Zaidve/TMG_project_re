@@ -178,6 +178,23 @@ def split_dataset(
     }
 
 
+def kfold_ids(
+    df: pd.DataFrame,
+    n_splits: int = 5,
+    stratify_by: tuple[str, ...] = ("label", "source"),
+    seed: int = 42,
+) -> np.ndarray:
+    """Stratified fold id (0..n_splits-1) for every row of `df`, in row order."""
+    rng = np.random.default_rng(seed)
+    folds = np.empty(len(df), dtype=int)
+    offset = 0  # carry the round-robin position across strata so fold sizes stay even
+    for _, group in df.reset_index(drop=True).groupby(list(stratify_by), sort=True):
+        idx = rng.permutation(group.index.to_numpy())
+        folds[idx] = (np.arange(len(idx)) + offset) % n_splits
+        offset += len(idx)
+    return folds
+
+
 def load_image(path: str | Path) -> Image.Image:
     """Open a thumbnail as RGB. Files are JPEG/PNG/WebP/GIF regardless of the .png name."""
     with Image.open(path) as img:
