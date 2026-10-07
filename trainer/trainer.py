@@ -40,14 +40,22 @@ def classification_metrics(labels: np.ndarray, preds: np.ndarray) -> dict[str, f
 
 
 def parameter_groups(
-    model: nn.Module, lr: float, weight_decay: float, layer_decay: float = 1.0
+    model: nn.Module,
+    lr: float,
+    weight_decay: float,
+    layer_decay: float = 1.0,
+    lr_overrides: dict[str, float] | None = None,
 ) -> list[dict]:
     """AdamW groups: no weight decay on biases/LayerNorm, optional layer-wise lr decay.
 
     With `layer_decay` < 1 the head keeps `lr` and each transformer layer below it gets
     `layer_decay` times the rate of the layer above (embeddings lowest). Layers are
     recognised by ".layer.<n>." in the parameter name, as in BERT/RoBERTa/ViT encoders.
+
+    `lr_overrides` maps a parameter-name prefix to a fixed learning rate, for modules
+    trained from scratch next to a pre-trained encoder, e.g. {"classifier.": 1e-3}.
     """
+    lr_overrides = lr_overrides or {}
     named = [(n, p) for n, p in model.named_parameters() if p.requires_grad]
     layer_ids = [int(m.group(1)) for n, _ in named if (m := re.search(r"\.layer\.(\d+)\.", n))]
     num_layers = max(layer_ids) + 1 if layer_ids else 0
@@ -58,16 +66,19 @@ def parameter_groups(
             return int(m.group(1)) + 1
         return 0 if "embeddings" in name else num_layers + 1
 
-    groups: dict[tuple[int, bool], dict] = {}
+    groups: dict[tuple, dict] = {}
     for name, param in named:
         decays = not any(k in name for k in ("bias", "LayerNorm.weight"))
         d = depth(name) if layer_decay != 1.0 else num_layers + 1
+        override = next((p for p in lr_overrides if name.startswith(p)), None)
         group = groups.setdefault(
-            (d, decays),
+            (d, decays, override),
             {
                 "params": [],
                 "weight_decay": weight_decay if decays else 0.0,
-                "lr": lr * layer_decay ** (num_layers + 1 - d),
+                "lr": lr_overrides[override]
+                if override is not None
+                else lr * layer_decay ** (num_layers + 1 - d),
             },
         )
         group["params"].append(param)
@@ -98,6 +109,7 @@ class Trainer:
         monitor: str = "f1",
         rdrop_alpha: float = 0.0,
         layer_decay: float = 1.0,
+        lr_overrides: dict[str, float] | None = None,
         amp: bool = True,
         device: str | torch.device | None = None,
     ):
@@ -115,7 +127,7 @@ class Trainer:
         self.amp = amp and self.device.type == "cuda"
 
         self.optimizer = torch.optim.AdamW(
-            parameter_groups(model, lr, weight_decay, layer_decay), lr=lr
+            parameter_groups(model, lr, weight_decay, layer_decay, lr_overrides), lr=lr
         )
         total_steps = len(train_loader) * epochs
         self.scheduler = get_linear_schedule_with_warmup(

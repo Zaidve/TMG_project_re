@@ -47,8 +47,22 @@ def _metrics(labels: np.ndarray, probs: np.ndarray, threshold: float = 0.5) -> d
     return classification_metrics(labels, (probs >= threshold).astype(int))
 
 
-def run(cfg: CVConfig) -> dict:
-    """Returns fold metrics, out-of-fold and test prediction tables and a summary."""
+def phobert_setup(cfg: CVConfig, pool: pd.DataFrame, test: pd.DataFrame):
+    """Tokenizer, model factory and extra Trainer arguments for the plain PhoBERT run."""
+    return (
+        load_tokenizer(cfg.model_name),
+        lambda: PhoBERTClassifier(cfg.model_name, dropout=cfg.dropout),
+        {},
+    )
+
+
+def run(cfg: CVConfig, setup=phobert_setup) -> dict:
+    """Returns fold metrics, out-of-fold and test prediction tables and a summary.
+
+    `setup(cfg, pool, test)` supplies the tokenizer, a function building a fresh model
+    for each fold, and extra Trainer keyword arguments, so other text models can reuse
+    the same folds and reporting (see `trainer.train_phow2v_cv`).
+    """
     transformers.logging.set_verbosity_error()
     out_dir = Path(cfg.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -62,7 +76,7 @@ def run(cfg: CVConfig) -> dict:
     pool, test = segment_words(pool_raw), segment_words(test_raw)
     folds = kfold_ids(pool, cfg.n_folds, seed=cfg.seed)
 
-    tokenizer = load_tokenizer(cfg.model_name)
+    tokenizer, make_model, trainer_kwargs = setup(cfg, pool, test)
     oof = np.full(len(pool), np.nan)
     test_probs = np.zeros((cfg.n_folds, len(test)))
     fold_rows = []
@@ -86,7 +100,7 @@ def run(cfg: CVConfig) -> dict:
             num_workers=cfg.num_workers,
         )
         trainer = Trainer(
-            PhoBERTClassifier(cfg.model_name, dropout=cfg.dropout),
+            make_model(),
             loaders["train"],
             loaders["val"],
             out_dir=out_dir / f"fold{fold}",
@@ -99,6 +113,7 @@ def run(cfg: CVConfig) -> dict:
             monitor=cfg.monitor,
             rdrop_alpha=cfg.rdrop_alpha,
             layer_decay=cfg.layer_decay,
+            **trainer_kwargs,
         )
         history = trainer.fit()
 
