@@ -8,11 +8,13 @@ main logits under "logits" (extra entries are passed on to the criterion).
 from __future__ import annotations
 
 import json
+import re
 import time
 from pathlib import Path
 
 import numpy as np
 import torch
+import torch.nn.functional as F
 from torch import nn
 from tqdm.auto import tqdm
 from transformers import get_linear_schedule_with_warmup
@@ -37,7 +39,48 @@ def classification_metrics(labels: np.ndarray, preds: np.ndarray) -> dict[str, f
     }
 
 
+def parameter_groups(
+    model: nn.Module, lr: float, weight_decay: float, layer_decay: float = 1.0
+) -> list[dict]:
+    """AdamW groups: no weight decay on biases/LayerNorm, optional layer-wise lr decay.
+
+    With `layer_decay` < 1 the head keeps `lr` and each transformer layer below it gets
+    `layer_decay` times the rate of the layer above (embeddings lowest). Layers are
+    recognised by ".layer.<n>." in the parameter name, as in BERT/RoBERTa/ViT encoders.
+    """
+    named = [(n, p) for n, p in model.named_parameters() if p.requires_grad]
+    layer_ids = [int(m.group(1)) for n, _ in named if (m := re.search(r"\.layer\.(\d+)\.", n))]
+    num_layers = max(layer_ids) + 1 if layer_ids else 0
+
+    def depth(name: str) -> int:  # 0 = embeddings ... num_layers + 1 = head
+        m = re.search(r"\.layer\.(\d+)\.", name)
+        if m:
+            return int(m.group(1)) + 1
+        return 0 if "embeddings" in name else num_layers + 1
+
+    groups: dict[tuple[int, bool], dict] = {}
+    for name, param in named:
+        decays = not any(k in name for k in ("bias", "LayerNorm.weight"))
+        d = depth(name) if layer_decay != 1.0 else num_layers + 1
+        group = groups.setdefault(
+            (d, decays),
+            {
+                "params": [],
+                "weight_decay": weight_decay if decays else 0.0,
+                "lr": lr * layer_decay ** (num_layers + 1 - d),
+            },
+        )
+        group["params"].append(param)
+    return list(groups.values())
+
+
 class Trainer:
+    """`monitor` is a validation metric name; "loss" is minimised, anything else maximised.
+
+    `rdrop_alpha` > 0 enables R-Drop: every batch is passed through the model twice with
+    different dropout masks and a symmetric KL term pulls the two predictions together.
+    """
+
     def __init__(
         self,
         model: nn.Module,
@@ -53,6 +96,8 @@ class Trainer:
         grad_clip: float = 1.0,
         patience: int = 3,
         monitor: str = "f1",
+        rdrop_alpha: float = 0.0,
+        layer_decay: float = 1.0,
         amp: bool = True,
         device: str | torch.device | None = None,
     ):
@@ -66,22 +111,11 @@ class Trainer:
         self.grad_clip = grad_clip
         self.patience = patience
         self.monitor = monitor
+        self.rdrop_alpha = rdrop_alpha
         self.amp = amp and self.device.type == "cuda"
 
-        no_decay = ("bias", "LayerNorm.weight")
-        params = list(model.named_parameters())
         self.optimizer = torch.optim.AdamW(
-            [
-                {
-                    "params": [p for n, p in params if not any(k in n for k in no_decay)],
-                    "weight_decay": weight_decay,
-                },
-                {
-                    "params": [p for n, p in params if any(k in n for k in no_decay)],
-                    "weight_decay": 0.0,
-                },
-            ],
-            lr=lr,
+            parameter_groups(model, lr, weight_decay, layer_decay), lr=lr
         )
         total_steps = len(train_loader) * epochs
         self.scheduler = get_linear_schedule_with_warmup(
@@ -108,13 +142,29 @@ class Trainer:
             outputs = outputs.float()
         return outputs, labels
 
+    def _train_loss(self, batch: dict) -> tuple[torch.Tensor, torch.Tensor]:
+        outputs, labels = self._forward(batch)
+        loss = self.criterion(outputs, labels)
+        if self.rdrop_alpha > 0:
+            outputs2, _ = self._forward(batch)  # second pass, different dropout mask
+            loss = 0.5 * (loss + self.criterion(outputs2, labels))
+            log_p, log_q = (
+                (o["logits"] if isinstance(o, dict) else o).log_softmax(-1)
+                for o in (outputs, outputs2)
+            )
+            kl = 0.5 * (
+                F.kl_div(log_p, log_q, reduction="batchmean", log_target=True)
+                + F.kl_div(log_q, log_p, reduction="batchmean", log_target=True)
+            )
+            loss = loss + self.rdrop_alpha * kl
+        return loss, labels
+
     def train_epoch(self, epoch: int) -> float:
         self.model.train()
         total, seen = 0.0, 0
         bar = tqdm(self.train_loader, desc=f"epoch {epoch}", leave=False)
         for batch in bar:
-            outputs, labels = self._forward(batch)
-            loss = self.criterion(outputs, labels)
+            loss, labels = self._train_loss(batch)
             self.optimizer.zero_grad(set_to_none=True)
             self.scaler.scale(loss).backward()
             self.scaler.unscale_(self.optimizer)
@@ -154,6 +204,7 @@ class Trainer:
 
     def fit(self) -> list[dict]:
         """Train with early stopping on `monitor`; the best weights are reloaded at the end."""
+        sign = -1.0 if self.monitor == "loss" else 1.0
         best, bad_epochs = -float("inf"), 0
         for epoch in range(1, self.epochs + 1):
             start = time.time()
@@ -171,8 +222,8 @@ class Trainer:
                 f"| acc {val['accuracy']:.3f} | P {val['precision']:.3f} R {val['recall']:.3f} "
                 f"F1 {val['f1']:.3f} | macro F1 {val['macro_f1']:.3f} | {row['seconds']}s"
             )
-            if val[self.monitor] > best:
-                best, bad_epochs = val[self.monitor], 0
+            if sign * val[self.monitor] > best:
+                best, bad_epochs = sign * val[self.monitor], 0
                 torch.save(self.model.state_dict(), self.best_path)
             else:
                 bad_epochs += 1
@@ -181,5 +232,5 @@ class Trainer:
                     break
         self.model.load_state_dict(torch.load(self.best_path, map_location=self.device))
         (self.out_dir / "history.json").write_text(json.dumps(self.history, indent=2))
-        print(f"best val {self.monitor}: {best:.4f} -> {self.best_path}")
+        print(f"best val {self.monitor}: {sign * best:.4f} -> {self.best_path}")
         return self.history

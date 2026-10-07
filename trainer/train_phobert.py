@@ -43,6 +43,9 @@ class Config:
     dropout: float = 0.1
     weighted_loss: bool = True
     patience: int = 3
+    monitor: str = "f1"  # validation metric for checkpoint selection; "loss" is minimised
+    rdrop_alpha: float = 0.0  # > 0 enables R-Drop (doubles the training time)
+    layer_decay: float = 1.0  # < 1 lowers the learning rate layer by layer towards the embeddings
     num_workers: int = 2
     seed: int = 42
     limit: int = 0  # use only the first N rows of each split (smoke tests)
@@ -94,6 +97,9 @@ def run(cfg: Config) -> dict:
         warmup_ratio=cfg.warmup_ratio,
         class_weights=class_weights(splits["train"]) if cfg.weighted_loss else None,
         patience=cfg.patience,
+        monitor=cfg.monitor,
+        rdrop_alpha=cfg.rdrop_alpha,
+        layer_decay=cfg.layer_decay,
     )
     print(f"device: {trainer.device} | train batches: {len(loaders['train'])}")
     history = trainer.fit()

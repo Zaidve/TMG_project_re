@@ -96,6 +96,9 @@ def run(cfg: CVConfig) -> dict:
             warmup_ratio=cfg.warmup_ratio,
             class_weights=class_weights(splits["train"]) if cfg.weighted_loss else None,
             patience=cfg.patience,
+            monitor=cfg.monitor,
+            rdrop_alpha=cfg.rdrop_alpha,
+            layer_decay=cfg.layer_decay,
         )
         history = trainer.fit()
 
@@ -103,7 +106,8 @@ def run(cfg: CVConfig) -> dict:
         val_out, test_out = trainer.predict(loaders["val"]), trainer.predict(loaders["test"])
         oof[held_out] = val_out["prob"]
         test_probs[fold] = test_out["prob"]
-        best_epoch = max(history, key=lambda r: r[f"val_{trainer.monitor}"])["epoch"]
+        pick = min if cfg.monitor == "loss" else max
+        best_epoch = pick(history, key=lambda r: r[f"val_{cfg.monitor}"])["epoch"]
         fold_rows.append(
             {
                 "fold": fold,

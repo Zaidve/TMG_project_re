@@ -1,0 +1,20 @@
+{
+  "data_dir": "/tmp/TMG_project_re/data/processed",
+  "out_dir": "/kaggle/working/phobert_cv",
+  "model_name": "vinai/phobert-base-v2",
+  "max_length": 128,
+  "use_lead": true,
+  "batch_size": 32,
+  "epochs": 10,
+  "lr": 2e-05,
+  "weight_decay": 0.01,
+  "warmup_ratio": 0.1,
+  "dropout": 0.1,
+  "weighted_loss": true,
+  "patience": 3,
+  "num_workers": 0,
+  "seed": 42,
+  "limit": 0,
+  "n_folds": 5,
+  "keep_checkpoints": false
+}
