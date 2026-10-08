@@ -12,6 +12,7 @@ so the DataFrame helpers can be used from notebooks without it.
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -143,6 +144,41 @@ def load_processed(processed_dir: str | Path = ROOT / "data" / "processed") -> d
         part["image_path"] = [str(processed_dir / f) for f in part["image_file"]]
         splits[name] = part
     return splits
+
+
+def add_bodies(
+    df: pd.DataFrame, bodies_path: str | Path, max_words: int = 250, min_title_overlap: float = 0.5
+) -> pd.DataFrame:
+    """Append the start of each article's body (see `utils.collect_bodies`) to its lead.
+
+    Only bodies with status "ok" whose page title matches the article title are used;
+    other rows keep their lead unchanged. Adds a boolean `has_body` column.
+    The text model has no separate body input, so the body rides along in `lead_paragraph`.
+    """
+    bodies = {}
+    with open(bodies_path, encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                rec = json.loads(line)
+                usable = rec["status"] == "ok" and rec.get("title_overlap", 0) >= min_title_overlap
+                bodies[rec["id"]] = rec["body"] if usable else ""
+    # the same opening on three or more articles is site boilerplate, not an article
+    openings = pd.Series([b[:300] for b in bodies.values() if b]).value_counts()
+    boilerplate = set(openings[openings >= 3].index)
+    bodies = {i: ("" if b[:300] in boilerplate else b) for i, b in bodies.items()}
+
+    df = df.copy()
+    starts = []
+    for article_id, lead in zip(df["id"], df["lead_paragraph"]):
+        paragraphs = bodies.get(article_id, "").split("\n")
+        lead_tokens = set(lead.lower().split())
+        first = set(paragraphs[0].lower().split())
+        if lead_tokens and len(first & lead_tokens) >= 0.8 * len(first):  # body opens with the lead
+            paragraphs = paragraphs[1:]
+        starts.append(" ".join(" ".join(paragraphs).split()[:max_words]))
+    df["has_body"] = [bool(s) for s in starts]
+    df["lead_paragraph"] = [f"{lead} {s}".strip() for lead, s in zip(df["lead_paragraph"], starts)]
+    return df
 
 
 def segment_words(df: pd.DataFrame, columns: tuple[str, ...] = ("title", "lead_paragraph")) -> pd.DataFrame:

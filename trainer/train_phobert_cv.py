@@ -27,6 +27,7 @@ from trainer.trainer import Trainer, classification_metrics
 from utils.dataloader import (
     ID2LABEL,
     ROOT,
+    add_bodies,
     class_weights,
     kfold_ids,
     load_processed,
@@ -41,6 +42,8 @@ class CVConfig(Config):
     num_workers: int = 0
     n_folds: int = 5
     keep_checkpoints: bool = False  # each fold's best.pt is ~540 MB
+    body_path: str = ""  # bodies.jsonl from utils.collect_bodies; empty = title + lead only
+    body_words: int = 250  # how much of the body to append (raise max_length to 256 with it)
 
 
 def _metrics(labels: np.ndarray, probs: np.ndarray, threshold: float = 0.5) -> dict:
@@ -74,6 +77,10 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
     raw = load_processed(cfg.data_dir)
     if cfg.limit:
         raw = {k: v.head(cfg.limit) for k, v in raw.items()}
+    if cfg.body_path:
+        raw = {k: add_bodies(v, cfg.body_path, cfg.body_words) for k, v in raw.items()}
+        n_body = sum(int(v["has_body"].sum()) for v in raw.values())
+        print(f"article body added for {n_body} of {sum(map(len, raw.values()))} articles")
     pool_raw = pd.concat([raw["train"], raw["val"]], ignore_index=True)
     test_raw = raw["test"]
     pool, test = segment_words(pool_raw), segment_words(test_raw)
@@ -170,7 +177,7 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
         "ensemble_test": _metrics(test_labels, ensemble),
     }
 
-    keep = ["id", "source", "category", "title", "label"]
+    keep = ["id", "source", "category", "title", "label"] + (["has_body"] if cfg.body_path else [])
     oof_table = pool_raw[keep].assign(fold=folds, prob_clickbait=oof)
     oof_table["pred"] = (oof_table["prob_clickbait"] >= 0.5).astype(int).map(ID2LABEL)
     test_table = test_raw[keep].assign(
