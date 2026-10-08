@@ -62,8 +62,9 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
     """Returns fold metrics, out-of-fold and test prediction tables and a summary.
 
     `setup(cfg, pool, test)` supplies the tokenizer, a function building a fresh model
-    for each fold, and extra Trainer keyword arguments, so other text models can reuse
-    the same folds and reporting (see `trainer.train_phow2v_cv`).
+    for each fold, extra Trainer keyword arguments and, optionally, extra
+    `make_dataloaders` arguments, so other models can reuse the same folds and
+    reporting (see `trainer.train_phow2v_cv` and `trainer.train_image_cv`).
     """
     transformers.logging.set_verbosity_error()
     out_dir = Path(cfg.out_dir)
@@ -78,7 +79,8 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
     pool, test = segment_words(pool_raw), segment_words(test_raw)
     folds = kfold_ids(pool, cfg.n_folds, seed=cfg.seed)
 
-    tokenizer, make_model, trainer_kwargs = setup(cfg, pool, test)
+    tokenizer, make_model, trainer_kwargs, *rest = setup(cfg, pool, test)
+    loader_kwargs = {"use_image": False, **(rest[0] if rest else {})}
     oof = np.full(len(pool), np.nan)
     test_probs = np.zeros((cfg.n_folds, len(test)))
     fold_rows = []
@@ -98,8 +100,8 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
             batch_size=cfg.batch_size,
             max_length=cfg.max_length,
             use_lead=cfg.use_lead,
-            use_image=False,
             num_workers=cfg.num_workers,
+            **loader_kwargs,
         )
         weights = class_weights(splits["train"]) if cfg.weighted_loss else None
         criterion, eval_criterion = build_criterion(cfg, weights)
@@ -169,7 +171,8 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
     oof_table.to_csv(out_dir / "oof_predictions.csv", index=False)
     test_table.to_csv(out_dir / "test_predictions.csv", index=False)
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=2))
-    tokenizer.save_pretrained(out_dir / "tokenizer")
+    if tokenizer is not None:
+        tokenizer.save_pretrained(out_dir / "tokenizer")
 
     print("\n===== summary (clickbait F1) =====")
     print(f"out-of-fold, {len(pool)} articles : {summary['oof']['f1']:.4f}")

@@ -50,18 +50,19 @@ def parameter_groups(
 
     With `layer_decay` < 1 the head keeps `lr` and each transformer layer below it gets
     `layer_decay` times the rate of the layer above (embeddings lowest). Layers are
-    recognised by ".layer.<n>." in the parameter name, as in BERT/RoBERTa/ViT encoders.
+    recognised by ".layer.<n>." or ".layers.<n>." in the parameter name, as in
+    BERT/RoBERTa/ViT/CLIP encoders.
 
     `lr_overrides` maps a parameter-name prefix to a fixed learning rate, for modules
     trained from scratch next to a pre-trained encoder, e.g. {"classifier.": 1e-3}.
     """
     lr_overrides = lr_overrides or {}
     named = [(n, p) for n, p in model.named_parameters() if p.requires_grad]
-    layer_ids = [int(m.group(1)) for n, _ in named if (m := re.search(r"\.layer\.(\d+)\.", n))]
+    layer_ids = [int(m.group(1)) for n, _ in named if (m := re.search(r"\.layers?\.(\d+)\.", n))]
     num_layers = max(layer_ids) + 1 if layer_ids else 0
 
     def depth(name: str) -> int:  # 0 = embeddings ... num_layers + 1 = head
-        m = re.search(r"\.layer\.(\d+)\.", name)
+        m = re.search(r"\.layers?\.(\d+)\.", name)
         if m:
             return int(m.group(1)) + 1
         return 0 if "embeddings" in name else num_layers + 1

@@ -307,6 +307,10 @@ def make_dataloaders(
 
     `eval_image_transform` defaults to `image_transform`; pass a separate one when the
     training transform contains augmentation.
+
+    With `num_workers` > 0 the workers are started with "spawn" and kept alive between
+    epochs. Forked workers inherit the other loaders' iterators and print
+    "can only test a child process" errors when cleaning them up.
     """
     import torch
     from torch.utils.data import DataLoader
@@ -314,6 +318,9 @@ def make_dataloaders(
     if eval_image_transform is None:
         eval_image_transform = image_transform
     collate = Collator(tokenizer, image_processor, max_length, use_lead)
+    worker_kwargs = (
+        {"multiprocessing_context": "spawn", "persistent_workers": True} if num_workers else {}
+    )
     loaders = {}
     for name, part in splits.items():
         is_train = name == "train"
@@ -326,5 +333,6 @@ def make_dataloaders(
             collate_fn=collate,
             num_workers=num_workers,
             pin_memory=torch.cuda.is_available(),
+            **worker_kwargs,
         )
     return loaders
