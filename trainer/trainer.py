@@ -196,9 +196,14 @@ class Trainer:
 
     @torch.no_grad()
     def predict(self, loader) -> dict:
-        """Ids, labels, clickbait probabilities and mean loss over a loader."""
+        """Ids, labels, clickbait probabilities and mean loss over a loader.
+
+        For models with auxiliary heads, `branch_probs` holds the clickbait probability
+        of every extra "<name>_logits" output, keyed by <name>.
+        """
         self.model.eval()
         ids, labels_all, probs_all, total = [], [], [], 0.0
+        branches: dict[str, list] = {}
         for batch in loader:
             outputs, labels = self._forward(batch)
             total += self.eval_criterion(outputs, labels).item() * len(labels)
@@ -206,12 +211,19 @@ class Trainer:
             ids.extend(batch["id"])
             labels_all.append(labels.cpu().numpy())
             probs_all.append(logits.softmax(-1)[:, 1].cpu().numpy())
+            if isinstance(outputs, dict):
+                for key, value in outputs.items():
+                    if key.endswith("_logits"):
+                        branches.setdefault(key[: -len("_logits")], []).append(
+                            value.softmax(-1)[:, 1].cpu().numpy()
+                        )
         labels_all, probs_all = np.concatenate(labels_all), np.concatenate(probs_all)
         return {
             "id": ids,
             "label": labels_all,
             "prob": probs_all,
             "loss": total / len(labels_all),
+            "branch_probs": {k: np.concatenate(v) for k, v in branches.items()},
         }
 
     def evaluate(self, loader, threshold: float = 0.5) -> dict[str, float]:

@@ -34,6 +34,19 @@ def image_transforms(size: int = 224, augment: bool = True):
     return train_tfm, eval_tfm
 
 
+def set_clip_trainable(encoder: nn.Module, unfreeze_layers: int) -> None:
+    """Freeze a CLIP vision encoder except its top `unfreeze_layers` layers (-1 = train all)."""
+    # older transformers nest the transformer under `.vision_model`
+    vision = getattr(encoder, "vision_model", encoder)
+    train_all = unfreeze_layers < 0
+    for param in encoder.parameters():
+        param.requires_grad = train_all
+    if unfreeze_layers > 0:
+        for module in (*vision.encoder.layers[-unfreeze_layers:], vision.post_layernorm):
+            for param in module.parameters():
+                param.requires_grad = True
+
+
 class CLIPImageClassifier(nn.Module):
     """CLIP vision encoder + linear head on the pooled image feature.
 
@@ -62,16 +75,7 @@ class CLIPImageClassifier(nn.Module):
         self.set_trainable(unfreeze_layers)
 
     def set_trainable(self, unfreeze_layers: int) -> None:
-        # older transformers nest the transformer under `.vision_model`
-        vision = getattr(self.encoder, "vision_model", self.encoder)
-        layers = vision.encoder.layers
-        train_all = unfreeze_layers < 0
-        for param in self.encoder.parameters():
-            param.requires_grad = train_all
-        if unfreeze_layers > 0:
-            for module in (*layers[-unfreeze_layers:], vision.post_layernorm):
-                for param in module.parameters():
-                    param.requires_grad = True
+        set_clip_trainable(self.encoder, unfreeze_layers)
 
     def encode(self, pixel_values: torch.Tensor) -> torch.Tensor:
         return self.encoder(pixel_values=pixel_values).pooler_output

@@ -81,8 +81,11 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
 
     tokenizer, make_model, trainer_kwargs, *rest = setup(cfg, pool, test)
     loader_kwargs = {"use_image": False, **(rest[0] if rest else {})}
+    make_criterion = trainer_kwargs.pop("make_criterion", None)
     oof = np.full(len(pool), np.nan)
     test_probs = np.zeros((cfg.n_folds, len(test)))
+    oof_branch: dict[str, np.ndarray] = {}  # auxiliary heads of fusion models
+    test_branch: dict[str, np.ndarray] = {}
     fold_rows = []
 
     for fold in range(cfg.n_folds):
@@ -104,7 +107,10 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
             **loader_kwargs,
         )
         weights = class_weights(splits["train"]) if cfg.weighted_loss else None
-        criterion, eval_criterion = build_criterion(cfg, weights)
+        if make_criterion is not None:
+            criterion, eval_criterion = make_criterion(weights)
+        else:
+            criterion, eval_criterion = build_criterion(cfg, weights)
         trainer = Trainer(
             make_model(),
             loaders["train"],
@@ -129,6 +135,11 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
         val_out, test_out = trainer.predict(loaders["val"]), trainer.predict(loaders["test"])
         oof[held_out] = val_out["prob"]
         test_probs[fold] = test_out["prob"]
+        for name, probs in val_out["branch_probs"].items():
+            oof_branch.setdefault(name, np.full(len(pool), np.nan))[held_out] = probs
+            test_branch.setdefault(name, np.zeros((cfg.n_folds, len(test))))[fold] = test_out[
+                "branch_probs"
+            ][name]
         pick = min if cfg.monitor == "loss" else max
         best_epoch = pick(history, key=lambda r: r[f"val_{cfg.monitor}"])["epoch"]
         fold_rows.append(
@@ -166,6 +177,10 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
         **{f"prob_fold{f}": test_probs[f] for f in range(cfg.n_folds)}, prob_clickbait=ensemble
     )
     test_table["pred"] = (test_table["prob_clickbait"] >= 0.5).astype(int).map(ID2LABEL)
+    for name in oof_branch:
+        oof_table[f"prob_{name}_head"] = oof_branch[name]
+        test_table[f"prob_{name}_head"] = test_branch[name].mean(axis=0)
+        summary[f"oof_{name}_head"] = _metrics(pool_labels, oof_branch[name])
 
     fold_table.to_csv(out_dir / "fold_metrics.csv")
     oof_table.to_csv(out_dir / "oof_predictions.csv", index=False)
