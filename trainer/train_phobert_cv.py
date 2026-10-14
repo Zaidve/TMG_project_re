@@ -89,6 +89,9 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
     tokenizer, make_model, trainer_kwargs, *rest = setup(cfg, pool, test)
     loader_kwargs = {"use_image": False, **(rest[0] if rest else {})}
     make_criterion = trainer_kwargs.pop("make_criterion", None)
+    class_names = loader_kwargs.pop("class_names", {})  # auxiliary classification heads
+    oof_class: dict[str, np.ndarray] = {}
+    test_class: dict[str, np.ndarray] = {}
     oof = np.full(len(pool), np.nan)
     test_probs = np.zeros((cfg.n_folds, len(test)))
     oof_branch: dict[str, np.ndarray] = {}  # auxiliary heads of fusion models
@@ -142,6 +145,11 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
         val_out, test_out = trainer.predict(loaders["val"]), trainer.predict(loaders["test"])
         oof[held_out] = val_out["prob"]
         test_probs[fold] = test_out["prob"]
+        for name, preds in val_out["class_preds"].items():
+            oof_class.setdefault(name, np.full(len(pool), -1))[held_out] = preds
+            test_class.setdefault(name, np.zeros((cfg.n_folds, len(test)), dtype=int))[fold] = test_out[
+                "class_preds"
+            ][name]
         for name, probs in val_out["branch_probs"].items():
             oof_branch.setdefault(name, np.full(len(pool), np.nan))[held_out] = probs
             test_branch.setdefault(name, np.zeros((cfg.n_folds, len(test))))[fold] = test_out[
@@ -184,6 +192,15 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
         **{f"prob_fold{f}": test_probs[f] for f in range(cfg.n_folds)}, prob_clickbait=ensemble
     )
     test_table["pred"] = (test_table["prob_clickbait"] >= 0.5).astype(int).map(ID2LABEL)
+    for name, preds in oof_class.items():
+        names = np.array(class_names.get(name, []))
+        oof_table[f"pred_{name}"] = names[preds] if len(names) else preds
+        # test: majority vote of the fold models
+        votes = np.apply_along_axis(np.bincount, 0, test_class[name], minlength=max(len(names), 1))
+        test_table[f"pred_{name}"] = names[votes.argmax(0)] if len(names) else votes.argmax(0)
+        if f"{name}_id" in pool:
+            summary[f"oof_{name}_accuracy"] = float((preds == pool[f"{name}_id"].to_numpy()).mean())
+            print(f"auxiliary {name} head, out-of-fold accuracy: {summary[f'oof_{name}_accuracy']:.4f}")
     for name in oof_branch:
         oof_table[f"prob_{name}_head"] = oof_branch[name]
         test_table[f"prob_{name}_head"] = test_branch[name].mean(axis=0)

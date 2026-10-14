@@ -260,6 +260,8 @@ class ClickbaitDataset:
             "lead": row["lead_paragraph"],
             "label": int(row["label_id"]),
         }
+        if "topic_id" in row:  # auxiliary topic label for multi-task training
+            item["topic"] = int(row["topic_id"])
         if self.use_image:
             image = load_image(row["image_path"])
             if self.image_transform is not None:
@@ -290,6 +292,8 @@ class Collator:
             "id": [it["id"] for it in items],
             "labels": torch.tensor([it["label"] for it in items], dtype=torch.long),
         }
+        if "topic" in items[0]:
+            batch["topic_labels"] = torch.tensor([it["topic"] for it in items], dtype=torch.long)
         titles = [it["title"] for it in items]
         leads = [it["lead"] for it in items]
         if self.tokenizer is None:

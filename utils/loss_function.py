@@ -94,6 +94,28 @@ def supervised_contrastive(
     return (per_anchor[valid] / n_pos[valid]).mean()
 
 
+class MultiTaskLoss(nn.Module):
+    """`base` loss on the clickbait logits plus `topic_weight` x the model's own `topic_loss`.
+
+    The topic cross-entropy is computed inside the model (it needs the topic labels, which
+    the Trainer passes to the model, not to the loss).
+    """
+
+    def __init__(self, base: nn.Module, topic_weight: float = 0.5):
+        super().__init__()
+        self.base = base
+        self.topic_weight = topic_weight
+        self.last_terms: dict[str, float] = {}
+
+    def forward(self, outputs: dict, labels: torch.Tensor) -> torch.Tensor:
+        loss = self.base(outputs, labels)
+        self.last_terms = {"clickbait": loss.item()}
+        if self.topic_weight and outputs.get("topic_loss") is not None:
+            self.last_terms["topic"] = outputs["topic_loss"].item()
+            loss = loss + self.topic_weight * outputs["topic_loss"]
+        return loss
+
+
 class ClassificationLoss(nn.Module):
     """Class-weighted cross-entropy with optional variants, for a single (non-fusion) model.
 

@@ -199,11 +199,13 @@ class Trainer:
         """Ids, labels, clickbait probabilities and mean loss over a loader.
 
         For models with auxiliary heads, `branch_probs` holds the clickbait probability
-        of every extra "<name>_logits" output, keyed by <name>.
+        of every extra "<name>_logits" output, keyed by <name>, and `class_preds` the
+        predicted class of every "<name>_scores" output (e.g. an auxiliary topic head).
         """
         self.model.eval()
         ids, labels_all, probs_all, total = [], [], [], 0.0
         branches: dict[str, list] = {}
+        class_preds: dict[str, list] = {}
         for batch in loader:
             outputs, labels = self._forward(batch)
             total += self.eval_criterion(outputs, labels).item() * len(labels)
@@ -217,6 +219,10 @@ class Trainer:
                         branches.setdefault(key[: -len("_logits")], []).append(
                             value.softmax(-1)[:, 1].cpu().numpy()
                         )
+                    elif key.endswith("_scores"):
+                        class_preds.setdefault(key[: -len("_scores")], []).append(
+                            value.argmax(-1).cpu().numpy()
+                        )
         labels_all, probs_all = np.concatenate(labels_all), np.concatenate(probs_all)
         return {
             "id": ids,
@@ -224,6 +230,7 @@ class Trainer:
             "prob": probs_all,
             "loss": total / len(labels_all),
             "branch_probs": {k: np.concatenate(v) for k, v in branches.items()},
+            "class_preds": {k: np.concatenate(v) for k, v in class_preds.items()},
         }
 
     def evaluate(self, loader, threshold: float = 0.5) -> dict[str, float]:
