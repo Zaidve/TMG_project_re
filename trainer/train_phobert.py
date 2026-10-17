@@ -1,5 +1,10 @@
 """Fine-tune PhoBERT-base-v2 on title + lead paragraph (text only).
 
+The defaults are the final configuration chosen after the cross-validation experiments
+(out-of-fold F1 0.771): weighted cross-entropy, 5 epochs, layer-wise learning rate decay
+0.9, checkpoint on validation loss. The best checkpoint, tokenizer and config are saved
+to `out_dir` and can be loaded with `utils.predict.ClickbaitPredictor`.
+
     python -m trainer.train_phobert --data-dir data/processed --out-dir outputs/phobert
 """
 
@@ -32,21 +37,21 @@ from utils.loss_function import ClassificationLoss
 @dataclass
 class Config:
     data_dir: str = str(ROOT / "data" / "processed")
-    out_dir: str = str(ROOT / "outputs" / "phobert")
+    out_dir: str = str(ROOT / "outputs" / "phobert_final")
     model_name: str = PHOBERT_NAME
     max_length: int = 128
     use_lead: bool = True
     batch_size: int = 32
-    epochs: int = 10
+    epochs: int = 5
     lr: float = 2e-5
     weight_decay: float = 0.01
     warmup_ratio: float = 0.1
     dropout: float = 0.1
     weighted_loss: bool = True
     patience: int = 3
-    monitor: str = "f1"  # validation metric for checkpoint selection; "loss" is minimised
+    monitor: str = "loss"  # validation metric for checkpoint selection; "loss" is minimised
     rdrop_alpha: float = 0.0  # > 0 enables R-Drop (doubles the training time)
-    layer_decay: float = 1.0  # < 1 lowers the learning rate layer by layer towards the embeddings
+    layer_decay: float = 0.9  # < 1 lowers the learning rate layer by layer towards the embeddings
     # loss variants, see utils.loss_function.ClassificationLoss (all off = weighted cross-entropy)
     label_smoothing: float = 0.0
     focal_gamma: float = 0.0
@@ -54,6 +59,7 @@ class Config:
     supcon_weight: float = 0.0
     supcon_temperature: float = 0.3
     num_workers: int = 2
+    segment: bool = True  # word-segment the text with pyvi, as PhoBERT was pre-trained
     seed: int = 42
     limit: int = 0  # use only the first N rows of each split (smoke tests)
 
@@ -99,7 +105,8 @@ def run(cfg: Config) -> dict:
     splits = load_processed(cfg.data_dir)
     if cfg.limit:
         splits = {k: v.head(cfg.limit) for k, v in splits.items()}
-    splits = {k: segment_words(v) for k, v in splits.items()}
+    if cfg.segment:
+        splits = {k: segment_words(v) for k, v in splits.items()}
 
     tokenizer = load_tokenizer(cfg.model_name)
     loaders = make_dataloaders(

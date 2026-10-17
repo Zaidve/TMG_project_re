@@ -83,7 +83,7 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
         print(f"article body added for {n_body} of {sum(map(len, raw.values()))} articles")
     pool_raw = pd.concat([raw["train"], raw["val"]], ignore_index=True)
     test_raw = raw["test"]
-    pool, test = segment_words(pool_raw), segment_words(test_raw)
+    pool, test = (segment_words(pool_raw), segment_words(test_raw)) if cfg.segment else (pool_raw.copy(), test_raw.copy())
     folds = kfold_ids(pool, cfg.n_folds, seed=cfg.seed)
 
     tokenizer, make_model, trainer_kwargs, *rest = setup(cfg, pool, test)
