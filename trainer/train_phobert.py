@@ -60,6 +60,7 @@ class Config:
     supcon_temperature: float = 0.3
     num_workers: int = 2
     segment: bool = True  # word-segment the text with pyvi, as PhoBERT was pre-trained
+    lead_dropout: float = 0.5  # share of training examples shown without their lead
     seed: int = 42
     limit: int = 0  # use only the first N rows of each split (smoke tests)
 
@@ -117,6 +118,7 @@ def run(cfg: Config) -> dict:
         use_lead=cfg.use_lead,
         use_image=False,
         num_workers=cfg.num_workers,
+        lead_dropout=cfg.lead_dropout,
     )
     model = PhoBERTClassifier(
         cfg.model_name, dropout=cfg.dropout, return_features=cfg.supcon_weight > 0
@@ -153,6 +155,19 @@ def run(cfg: Config) -> dict:
     preds = preds.merge(load_processed(cfg.data_dir)["test"], on="id")[
         ["id", "source", "category", "title", "label", "pred", "prob_clickbait"]
     ]
+    # the same test articles with the headline alone, as the extension often sees them
+    title_only = make_dataloaders(
+        {"test": splits["test"].assign(lead_paragraph="")},
+        tokenizer=tokenizer, batch_size=cfg.batch_size, max_length=cfg.max_length,
+        use_lead=cfg.use_lead, use_image=False,
+    )["test"]
+    title_metrics = trainer.evaluate(title_only)
+    print("test, title only | " + " | ".join(f"{k} {v:.4f}" for k, v in title_metrics.items()))
+    (out_dir / "test_metrics_title_only.json").write_text(json.dumps(title_metrics, indent=2))
+    preds["prob_clickbait_title_only"] = pd.Series(
+        trainer.predict(title_only)["prob"], index=out["id"]
+    ).reindex(preds["id"]).to_numpy()
+
     preds.to_csv(out_dir / "test_predictions.csv", index=False)
     tokenizer.save_pretrained(out_dir / "tokenizer")
 
@@ -160,6 +175,7 @@ def run(cfg: Config) -> dict:
         "trainer": trainer,
         "history": history,
         "test_metrics": test_metrics,
+        "test_metrics_title_only": title_metrics,
         "test_predictions": preds,
     }
 

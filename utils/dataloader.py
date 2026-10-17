@@ -13,6 +13,7 @@ so the DataFrame helpers can be used from notebooks without it.
 from __future__ import annotations
 
 import json
+import random
 import re
 from pathlib import Path
 
@@ -244,10 +245,14 @@ class ClickbaitDataset:
     leave it None to get PIL images and let the collator's image processor handle them.
     """
 
-    def __init__(self, df: pd.DataFrame, image_transform=None, use_image: bool = True):
+    def __init__(
+        self, df: pd.DataFrame, image_transform=None, use_image: bool = True, lead_dropout: float = 0.0
+    ):
         self.df = df.reset_index(drop=True)
         self.image_transform = image_transform
         self.use_image = use_image
+        # chance of hiding the lead, so the model also learns to judge a headline alone
+        self.lead_dropout = lead_dropout
 
     def __len__(self) -> int:
         return len(self.df)
@@ -257,7 +262,7 @@ class ClickbaitDataset:
         item = {
             "id": row["id"],
             "title": row["title"],
-            "lead": row["lead_paragraph"],
+            "lead": "" if self.lead_dropout and random.random() < self.lead_dropout else row["lead_paragraph"],
             "label": int(row["label_id"]),
         }
         if "topic_id" in row:  # auxiliary topic label for multi-task training
@@ -342,6 +347,7 @@ def make_dataloaders(
     use_lead: bool = True,
     use_image: bool = True,
     num_workers: int = 0,
+    lead_dropout: float = 0.0,
 ) -> dict:
     """One DataLoader per split; only `train` is shuffled and uses `image_transform`.
 
@@ -366,7 +372,10 @@ def make_dataloaders(
         is_train = name == "train"
         loaders[name] = DataLoader(
             ClickbaitDataset(
-                part, image_transform if is_train else eval_image_transform, use_image
+                part,
+                image_transform if is_train else eval_image_transform,
+                use_image,
+                lead_dropout if is_train else 0.0,
             ),
             batch_size=batch_size,
             shuffle=is_train,

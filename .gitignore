@@ -1,2 +1,5 @@
 # scraped article text is the publishers' copyright - keep it out of the public repo
 data/bodies/
+
+# trained model weights (~0.5 GB) - share via Kaggle or a release, not git
+models/

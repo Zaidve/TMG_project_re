@@ -63,7 +63,7 @@ class ClickbaitPredictor:
         results = []
         for start in range(0, len(rows), batch_size):
             part = rows.iloc[start : start + batch_size]
-            leads_part = list(part["lead_paragraph"]) if use_lead and part["lead_paragraph"].str.len().any() else None
+            leads_part = list(part["lead_paragraph"]) if use_lead else None
             batch = self.tokenizer(
                 list(part["title"]), leads_part, padding=True, truncation=True,
                 max_length=self.config.get("max_length", 128), return_tensors="pt",

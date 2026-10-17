@@ -42,6 +42,7 @@ class CVConfig(Config):
     num_workers: int = 0
     n_folds: int = 5
     keep_checkpoints: bool = False  # each fold's best.pt is ~540 MB
+    lead_dropout: float = 0.0  # the cross-validation experiments always showed the lead
     body_path: str = ""  # bodies.jsonl from utils.collect_bodies; empty = title + lead only
     body_words: int = 250  # how much of the body to append (raise max_length to 256 with it)
 
@@ -114,6 +115,7 @@ def run(cfg: CVConfig, setup=phobert_setup) -> dict:
             max_length=cfg.max_length,
             use_lead=cfg.use_lead,
             num_workers=cfg.num_workers,
+            lead_dropout=cfg.lead_dropout,
             **loader_kwargs,
         )
         weights = class_weights(splits["train"]) if cfg.weighted_loss else None
