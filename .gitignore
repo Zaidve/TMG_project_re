@@ -6,3 +6,6 @@ models/
 
 # packaged extension for store upload (rebuild from extension/)
 dist/
+
+# Python bytecode cache
+__pycache__/
