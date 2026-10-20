@@ -18,6 +18,10 @@ pyvi>=0.1.1
 scikit-learn>=1.4
 tqdm>=4.66
 
+# model service for the browser extension (service/app.py)
+fastapi>=0.110
+uvicorn>=0.29
+
 # notebooks
 ipykernel>=6.29
 notebook>=7.0

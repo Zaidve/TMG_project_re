@@ -3,3 +3,6 @@ data/bodies/
 
 # trained model weights (~0.5 GB) - share via Kaggle or a release, not git
 models/
+
+# packaged extension for store upload (rebuild from extension/)
+dist/
