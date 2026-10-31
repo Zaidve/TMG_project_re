@@ -9,3 +9,12 @@ dist/
 
 # Python bytecode cache
 __pycache__/
+
+# local notes
+docs/
+
+# Python virtual environments and local settings
+.venv/
+venv/
+env/
+.env
