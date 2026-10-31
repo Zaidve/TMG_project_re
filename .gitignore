@@ -3,3 +3,18 @@ data/bodies/
 
 # trained model weights (~0.5 GB) - share via Kaggle or a release, not git
 models/
+
+# packaged extension for store upload (rebuild from extension/)
+dist/
+
+# Python bytecode cache
+__pycache__/
+
+# local notes
+docs/
+
+# Python virtual environments and local settings
+.venv/
+venv/
+env/
+.env

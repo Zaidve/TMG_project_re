@@ -1,0 +1,342 @@
+id,source,category,title,label,pred,prob_clickbait,prob_clickbait_title_only
+article_2570,Thanh Niên,Giải trí & Showbiz,Ban giám khảo nói gì về kết quả Phương Linh đăng quang Hoa hậu Hoàn vũ Việt Nam 2025?,clickbait,clickbait,0.95857656,0.9186994
+article_3238,Báo Mới,Sức khỏe & Đời sống,XSMN - Kết quả xổ số miền Nam hôm nay 23/6/2025 - KQXSMN 23/6,non-clickbait,non-clickbait,0.02876159,0.017712297
+article_0283,VnExpress,Quốc tế,Lãnh tụ Iran lần đầu lên tiếng sau cuộc tập kích của Mỹ,non-clickbait,non-clickbait,0.09760523,0.050004896
+article_3270,Báo Mới,Sức khỏe & Đời sống,"Kết quả xổ số hôm nay, 23-6: TP HCM, Đồng Tháp, Cà Mau, Huế, Hà Nội...",non-clickbait,non-clickbait,0.019851701,0.018352037
+article_0757,24h,Tin tức tổng hợp,Xử lý nghiêm cán bộ CSGT có lời lẽ thiếu chuẩn mực,non-clickbait,non-clickbait,0.052182533,0.02824778
+article_1806,Thanh Niên,Giáo dục & Học đường,Nam sinh Việt đậu ĐH Monash từ hành trình nhiệt huyết và bước ngoặt năm lớp 10,non-clickbait,non-clickbait,0.058507007,0.10828321
+article_1225,Thanh Niên,Sức khỏe & Đời sống,Sử dụng điện tiết kiệm và an toàn ở tòa cao ốc,non-clickbait,non-clickbait,0.020061802,0.025662709
+article_2876,Thanh Niên,Other,14 triệu USD giá bản quyền truyền hình World Cup 2026: Đài nào tại Việt Nam mua nổi?,clickbait,clickbait,0.91964257,0.9064877
+article_3122,Thanh Niên,Other,Kết quả khảo sát gây 'sốc' trước giờ G của Windows 10,clickbait,clickbait,0.9774785,0.9758546
+article_1451,Thanh Niên,Sức khỏe & Đời sống,4 bài tập chân giúp giảm cholesterol cực kỳ hiệu quả,clickbait,clickbait,0.9675945,0.9621787
+article_2728,Báo Mới,Công nghệ & Khoa học,Pin ô tô điện có tuổi thọ cao hơn xe xăng,clickbait,non-clickbait,0.027795624,0.030502053
+article_2401,24h,Other,"Galaxy S25 Edge thua thảm: Canh bạc ""siêu mỏng"" của Samsung đã sụp đổ",clickbait,clickbait,0.70161086,0.87396973
+article_3222,24h,Giải trí & Showbiz,"Sự trở lại của mỹ nam cao 1m86 đóng phim trăm tỷ của Trấn Thành, Victor Vũ",non-clickbait,clickbait,0.522324,0.40629503
+article_1927,Báo Mới,Thể thao,Tiền vệ kỳ cựu Paul Pogba tái xuất,non-clickbait,non-clickbait,0.1187934,0.14187485
+article_2786,VnExpress,Other,Dấu hiệu của người trưởng thành,clickbait,clickbait,0.8562122,0.8983214
+article_0034,VnExpress,Tin tức tổng hợp,Bộ trưởng GD&ĐT: Xem xét bỏ tỷ lệ 40% học sinh THCS vào trường nghề,non-clickbait,non-clickbait,0.015380124,0.012771868
+article_0321,VnExpress,Quốc tế,Quan chức Iran phủ nhận 'kho tên lửa đang cạn dần',non-clickbait,non-clickbait,0.36528686,0.24889913
+article_0275,Báo Mới,Thể thao,Bảng xếp hạng Europa League 2024/2025 mới nhất,non-clickbait,non-clickbait,0.021698099,0.018887341
+article_3773,24h,Du lịch & Ẩm thực,Combo nghỉ dưỡng giá rẻ tiện lợi hay bẫy du lịch?,clickbait,clickbait,0.93505055,0.7675156
+article_0016,VnExpress,Tin tức tổng hợp,Mở rộng Quảng trường Ba Đình,non-clickbait,non-clickbait,0.017848738,0.05877656
+article_1973,VnExpress,Other,Những cách phối đẹp với áo hai dây,non-clickbait,non-clickbait,0.47091246,0.34394744
+article_0117,VietNamNet,Chính trị & An ninh,Đại sứ quán Việt Nam tại Israel ra thông báo khẩn sau khi Mỹ tấn công Iran,non-clickbait,non-clickbait,0.016801612,0.015029197
+article_3134,VietNamNet,Other,Đừng vội chi tiền tỷ mua đất xây nhà nếu chưa kiểm tra 4 điều quan trọng này,clickbait,clickbait,0.9774785,0.97622
+article_3742,24h,Du lịch & Ẩm thực,9x và bộ sưu tập bánh quy cực ấn tượng mừng 50 năm thống nhất đất nước,non-clickbait,clickbait,0.64646024,0.29645053
+article_0430,SaoStar,Sức khỏe & Đời sống,Dự báo thời tiết thành phố Hà Nội trong ngày 23/6,non-clickbait,non-clickbait,0.016866265,0.018246775
+article_0701,SaoStar,Quốc tế,"Đặt 252 bàn tiệc cưới xa hoa rồi 'quỵt' gần 2 tỷ đồng, người đàn ông gây phẫn nộ",clickbait,clickbait,0.97863114,0.9786107
+article_3061,VnExpress,Other,Xe máy lấn làn lao thẳng vào đầu ôtô,non-clickbait,non-clickbait,0.06632687,0.055157773
+article_2249,VnExpress,Other,Bán rẻ đến mức nào sẽ là phá giá?,clickbait,clickbait,0.9251624,0.9557341
+article_0568,VnExpress,Kinh doanh & Kinh tế,Đề xuất loạt ưu đãi để tư nhân cùng Nhà nước phát triển khoa học công nghệ,non-clickbait,non-clickbait,0.01990879,0.020784603
+article_3707,24h,Sức khỏe & Đời sống,"10 giây 'ngồi xuống, đứng lên' dự báo nguy cơ bệnh tim mạch",clickbait,clickbait,0.9590394,0.9541374
+article_2015,Tuổi Trẻ,Văn hóa & Nghệ thuật,"Nhạc kịch rực rỡ còn ít khán giả, mà diễn đọc kịch lại hấp dẫn",non-clickbait,non-clickbait,0.12049055,0.40703875
+article_2071,Thanh Niên,Other,Vì sao Hà Nam được ví như 'ngôi sao' mới nổi ngay sát Thủ đô?,clickbait,clickbait,0.96888566,0.9746045
+article_2597,Thanh Niên,Other,"Bố mẹ Phương Linh là cán bộ về hưu, không nghĩ con gái đăng quang hoa hậu",non-clickbait,clickbait,0.5049065,0.40586078
+article_2964,24h,Other,11 năm làm đẹp không ồn ào – Bí quyết khiến phụ nữ quay lại Chance Kim,clickbait,clickbait,0.969814,0.9676251
+article_1501,VietNamNet,Quốc tế,Tổng thống Ukraine cảnh báo sẽ tấn công tầm xa nhiều hơn vào Nga,non-clickbait,non-clickbait,0.032961246,0.026886743
+article_1326,Báo Mới,Kinh doanh & Kinh tế,"Người dân các nước đang phát triển tin tưởng mạnh mẽ vào AI, các nước giàu nghi ngại",non-clickbait,non-clickbait,0.050004896,0.07290027
+article_1744,VnExpress,Thể thao,Alcaraz vào trận chung kết thứ 5 liên tiếp,non-clickbait,non-clickbait,0.02421455,0.041695766
+article_3108,Thanh Niên,Other,Sự khác biệt giữa Night Shift và Dark Mode trên iPhone,non-clickbait,non-clickbait,0.08866235,0.101144664
+article_0927,Thanh Niên,Other,"VinFast mở rộng nhà cung cấp nội, bao tiêu sản phẩm hướng tới mục tiêu 1 triệu xe/năm",non-clickbait,non-clickbait,0.016593179,0.015936993
+article_0780,Báo Mới,Tin tức tổng hợp,Báo và Đài PT - TH tỉnh đoạt giải Khuyến khích Giải báo chí quốc gia,non-clickbait,non-clickbait,0.012431651,0.014104308
+article_2196,Báo Mới,Giải trí & Showbiz,Hoa hậu Hoàn vũ Việt Nam giảm 10kg để thi nhan sắc,non-clickbait,non-clickbait,0.14560063,0.053502154
+article_3488,Báo Mới,Xe & Vận tải,"Trạm sạc phủ khắp Hà Nội, người dân yên tâm lựa chọn xe điện",non-clickbait,non-clickbait,0.019124037,0.02665774
+article_2521,VnExpress,Other,Số thí sinh đăng ký xét tuyển nhóm trường quân đội tăng,non-clickbait,non-clickbait,0.025178842,0.020527788
+article_3213,24h,Giải trí & Showbiz,Nghệ sĩ 'Anh trai vượt ngàn chông gai' diễn hơn 6 tiếng dưới mưa,non-clickbait,non-clickbait,0.10167862,0.12890846
+article_1405,VnExpress,Other,Người béo phì bị kỳ thị,non-clickbait,non-clickbait,0.41066766,0.46721402
+article_0494,Báo Mới,Quốc tế,Nhiều quốc gia sẵn sàng cung cấp vũ khí hạt nhân cho Iran?,clickbait,clickbait,0.65797806,0.79270506
+article_3504,Báo Mới,Xe & Vận tải,Giá xe Volkswagen Viloran và Teramont X tăng cả trăm triệu,non-clickbait,non-clickbait,0.021906367,0.019889742
+article_1855,VietNamNet,Sức khỏe & Đời sống,"Cặp đôi tâm đầu ý hợp, cùng nhau đếm và bấm nút hẹn hò",non-clickbait,clickbait,0.57692933,0.6448963
+article_0934,Thanh Niên,Other,Lúng túng định giá đất,clickbait,non-clickbait,0.10734387,0.37048158
+article_0103,Thanh Niên,Chính trị & An ninh,Đảng Cộng sản Việt Nam: Độc lập dân tộc gắn liền với chủ nghĩa xã hội,non-clickbait,non-clickbait,0.03204008,0.022564495
+article_3774,24h,Du lịch & Ẩm thực,"""Săn” bình minh ở Mũi Điện nơi mặt trời mọc đầu tiên",non-clickbait,non-clickbait,0.322526,0.12405374
+article_2417,24h,Other,Hé lộ độ dày ấn tượng của iPhone 17 Pro Max,clickbait,clickbait,0.8147907,0.72903776
+article_0234,Báo Mới,Thể thao,"Bellingham quát tháo, Guler đáp trả",clickbait,clickbait,0.6554739,0.6381027
+article_0564,VnExpress,Kinh doanh & Kinh tế,Loạt thiết kế Code 11.59 by Audemars Piguet mới ra mắt tại Việt Nam,non-clickbait,non-clickbait,0.026031531,0.047602657
+article_2650,SaoStar,Công nghệ & Khoa học,"Chạm đam mê, bứt phá giới hạn cùng SYM Việt Nam",non-clickbait,non-clickbait,0.19467384,0.4322731
+article_0424,Kênh14,Thể thao,"Vừa ký hợp đồng giá 30 tỷ, thủ môn Việt kiều bỗng vướng phải tin đồn ly kỳ tại V.League",clickbait,clickbait,0.9761292,0.97038054
+article_1216,Thanh Niên,Other,"Lịch cúp điện ở Bà Rịa - Vũng Tàu, Bình Dương ngày 23.6",non-clickbait,non-clickbait,0.014700298,0.015014747
+article_3201,24h,Giải trí & Showbiz,Quốc Trường bị nhận xét nhạt nhòa trong phim 18+,non-clickbait,non-clickbait,0.47075942,0.6013449
+article_2749,Báo Mới,Other,"Hải Phòng – Hải Dương sẵn sàng hạ tầng, đặt nền móng cho chính quyền số toàn diện",non-clickbait,non-clickbait,0.01572399,0.01697999
+article_1085,Báo Mới,Other,'Cái chết của vua câm',clickbait,clickbait,0.57418585,0.8502822
+article_1117,VnExpress,Other,Bộ Xây dựng yêu cầu Vicem hoàn thiện tháp nghìn tỷ 'đắp chiếu' chục năm,clickbait,non-clickbait,0.07689148,0.085632786
+article_0431,SaoStar,Sức khỏe & Đời sống,"Lịch âm hôm nay 22/6/2025: Kiêng khởi công, tránh cưới hỏi kẻo gặp xui rủi",non-clickbait,non-clickbait,0.17617498,0.2905781
+article_3119,Thanh Niên,Other,Apple hồi sinh màu sắc sang trọng trên iPhone 17,non-clickbait,non-clickbait,0.056548137,0.045394883
+article_2656,SaoStar,Công nghệ & Khoa học,Việt Nam tiến tới làm chủ công nghệ năng lượng hạt nhân,non-clickbait,non-clickbait,0.020371296,0.023916386
+article_0235,Báo Mới,Thể thao,Những thông số ấn tượng của Nam Định ở V.League 2024/25,non-clickbait,non-clickbait,0.13128455,0.032867983
+article_2132,SaoStar,Giáo dục & Học đường,Học sinh viết văn tả mẹ 'dữ hơn phù thuỷ': Đọc câu kết mà ai cũng ngã ngửa,clickbait,clickbait,0.97889495,0.9785493
+article_3491,Báo Mới,Xe & Vận tải,Ra mắt Benelli TNT 125 - thiết kế cực 'cháy' chỉ 66 triệu,non-clickbait,non-clickbait,0.295789,0.37897608
+article_3106,Thanh Niên,Other,Rò rỉ hình ảnh kính VR Meta Quest 3S phiên bản Xbox,non-clickbait,non-clickbait,0.045734636,0.026180504
+article_0750,24h,Chính trị & An ninh,Bắt giữ 2 đối tượng đâm chết người trong lúc ăn nhậu,non-clickbait,non-clickbait,0.03875619,0.024168445
+article_2836,Thanh Niên,Thể thao,"Thắng đàn anh Lê Quang Liêm tại giải cờ vua KPNest, Lê Tuấn Minh khiêm tốn nói 'không có chiến thuật'",non-clickbait,clickbait,0.8175016,0.60536164
+article_2730,Báo Mới,Other,Insider GMC 2025 - khi chuyển đổi số cần gắn liền tăng trưởng kinh doanh cụ thể,non-clickbait,non-clickbait,0.04054074,0.031768616
+article_1484,Thanh Niên,Sức khỏe & Đời sống,"3 sai lầm khiến người trẻ vô tình hủy hoại thận, tăng nguy cơ ung thư",clickbait,clickbait,0.9737945,0.97288233
+article_2041,Thanh Niên,Other,Xử phạt hành chính người bán hải sản cân thiếu cho khách du lịch,non-clickbait,non-clickbait,0.027927874,0.01781453
+article_0423,Kênh14,Thể thao,"Đội bóng quê bầu Đức xuống hạng, lộ diện CLB đối đầu đội Công Phượng ở trận play-off V.League",clickbait,non-clickbait,0.20922722,0.12825193
+article_2426,Báo Mới,Other,Đề nghị điều chuyển khỏi lực lượng một CSGT có lời nói khiếm nhã khi đo nồng độ cồn,non-clickbait,non-clickbait,0.03191915,0.022201229
+article_1311,24h,Kinh doanh & Kinh tế,Giá xăng ngày mai có khả năng tăng mạnh khi xung đột Israel - Iran leo thang,non-clickbait,non-clickbait,0.028625505,0.027480692
+article_3221,24h,Giải trí & Showbiz,"HOT: Thiều Bảo Trâm lần đầu lên tiếng chuyện chia tay, khẳng định 1 câu rõ thái độ với tình cũ",clickbait,clickbait,0.9761519,0.9762654
+article_0795,Báo Mới,Tin tức tổng hợp,Lãnh đạo Hội LHPN Việt Nam tiếp đoàn đại biểu Ủy ban Bình đẳng giới và Gia đình của Quốc hội Hàn Quốc,non-clickbait,non-clickbait,0.013222823,0.01447569
+article_2895,VietNamNet,Xe & Vận tải,Xe điện cao cấp của Toyota dùng công nghệ của hai ‘ông lớn’ tại Trung Quốc,clickbait,clickbait,0.8262216,0.891339
+article_0751,24h,Chính trị & An ninh,Nghi án chồng sát hại vợ trong khách sạn rồi bỏ trốn,non-clickbait,non-clickbait,0.30590463,0.20809844
+article_2305,Thanh Niên,Văn hóa & Nghệ thuật,Ra mắt Trung tâm UNESCO Bảo tồn và phát triển đờn ca tài tử Nam bộ,non-clickbait,non-clickbait,0.018299334,0.019289603
+article_2419,24h,Other,Realme Neo 7 Turbo lộ diện với phiên bản trong suốt độc đáo,non-clickbait,non-clickbait,0.051510457,0.03452106
+article_0381,Thanh Niên,Other,"Giải thể 44 bộ chỉ huy Bộ đội biên phòng các tỉnh, thành phố",non-clickbait,non-clickbait,0.016914913,0.015998371
+article_1658,Báo Mới,Giáo dục & Học đường,"Tổ chức dạy học 2 buổi/ngày và tổ chức sinh hoạt hè cho trẻ em, học sinh",non-clickbait,non-clickbait,0.013875309,0.020371296
+article_2530,VnExpress,Other,Bảng quy đổi điểm tham khảo của Đại học Sư phạm Hà Nội,non-clickbait,non-clickbait,0.015145287,0.016215032
+article_0671,VietNamNet,Kinh doanh & Kinh tế,Người dân ở Hà Nội chen chân đi đổi xe máy xăng lấy xe máy điện,non-clickbait,clickbait,0.70548075,0.14688088
+article_1888,SaoStar,Sức khỏe & Đời sống,90% người giảm mỡ bụng thất bại vì bỏ qua 3 nguyên tắc ăn tối quan trọng này,clickbait,clickbait,0.9719393,0.9715909
+article_1410,VnExpress,Other,Ngồi lâu có ảnh hưởng đến sinh lý nam?,clickbait,clickbait,0.7756898,0.8506548
+article_1042,24h,Other,Thắng Lợi Group - Gỗ An Cường - Central bắt tay trở thành nhà sản xuất bất động sản chuyên nghiệp,non-clickbait,non-clickbait,0.029873094,0.02297737
+article_0056,Tuổi Trẻ,Du lịch & Ẩm thực,Cảnh sát giải cứu 3 du khách bị lạc khi leo núi Hoàng Ngưu Sơn,non-clickbait,non-clickbait,0.018905448,0.016230615
+article_2647,SaoStar,Công nghệ & Khoa học,Google Search đang mất dần khả năng kéo lượng truy cập về các website do AI,non-clickbait,clickbait,0.8372876,0.0705596
+article_2181,Báo Mới,Other,"Vì sao phim tiên hiệp của Dương Dương, Trương Tịnh Nghi chưa quay đã bị phản đối?",clickbait,clickbait,0.97543687,0.97419035
+article_2406,24h,Other,Giá máy giặt Toshiba Inverter tháng 6: Giảm tới 5 triệu đồng,non-clickbait,non-clickbait,0.026708463,0.018689308
+article_1327,Báo Mới,Other,Công tác chuẩn bị vận hành mô hình chính quyền cấp xã mới tại Càng Long,non-clickbait,non-clickbait,0.013146586,0.014447853
+article_0435,SaoStar,Sức khỏe & Đời sống,"Video: Con cá Koi nhảy vọt ra khỏi hồ, diễn biến tiếp theo ai xem cũng nổi giận",clickbait,clickbait,0.9790558,0.97957015
+article_1401,VnExpress,Other,20 mỹ phẩm chăm sóc da bị thu hồi do sai phạm ghi nhãn,non-clickbait,non-clickbait,0.02265081,0.018869253
+article_3223,24h,Giải trí & Showbiz,Phim Việt bị chọc thủng lưới trên sân nhà,clickbait,non-clickbait,0.44250855,0.08921626
+article_0306,VnExpress,Quốc tế,Oanh tạc cơ B-2 Mỹ 'bay 37 giờ liên tục' để tập kích Iran,non-clickbait,non-clickbait,0.077099696,0.060418423
+article_2619,VietNamNet,Chính trị & An ninh,Tài xế gây tai nạn khiến 6 người ở Nghệ An tử vong: ‘Tôi ám ảnh suốt thời gian dài’,non-clickbait,clickbait,0.7250163,0.73876333
+article_2077,VietNamNet,Sức khỏe & Đời sống,"Bỏ qua thủ tục tài chính, bật báo động đỏ cứu người nguy kịch trên đường đi làm",non-clickbait,non-clickbait,0.045183755,0.024940254
+article_1874,SaoStar,Sức khỏe & Đời sống,Diễn viên Ngân Hòa mắc suy thận giai đoạn cuối ở tuổi 29: Căn bệnh đáng báo động ở giới trẻ,non-clickbait,clickbait,0.6586371,0.8348113
+article_0505,Báo Mới,Quốc tế,"Úc ủng hộ Mỹ tấn công Iran, nhưng vẫn kêu gọi hòa bình: Nghịch lý ngoại giao?",clickbait,clickbait,0.8442164,0.86647177
+article_2338,VietNamNet,Công nghệ & Khoa học,Chủ tịch MISA: 'Phải làm chủ hạ tầng cốt lõi AI mới có thể làm chủ nền kinh tế',non-clickbait,non-clickbait,0.04111437,0.069985375
+article_2634,VietNamNet,Chính trị & An ninh,Bị bắt vì livestream bán hàng 72 tỷ đồng không nộp thuế,clickbait,non-clickbait,0.1459046,0.07942426
+article_3642,Báo Mới,Other,Đảm bảo cơ sở vật chất cho bộ máy mới hoạt động,non-clickbait,non-clickbait,0.016833907,0.017292492
+article_1620,24h,Thể thao,Video bóng đá U21 Tây Ban Nha - U21 Anh: Dàn sao Ngoại hạng Anh tỏa sáng (U21 châu Âu),non-clickbait,non-clickbait,0.04809205,0.034488525
+article_3474,Báo Mới,Xe & Vận tải,Sailun Tire ra mắt lốp xe sử dụng công nghệ Ecopoint tại thị trường Việt Nam,non-clickbait,non-clickbait,0.017797453,0.01665704
+article_1350,Báo Mới,Kinh doanh & Kinh tế,Vượt bão thuế quan: Số hóa để tận dụng chính sách và tăng sức đề kháng,non-clickbait,non-clickbait,0.038178276,0.08449276
+article_1290,SaoStar,Giải trí & Showbiz,Triệu Lệ Dĩnh lép vế trước Dương Mịch trong Tương Viên Lộng,clickbait,clickbait,0.8336634,0.38641608
+article_3262,Báo Mới,Sức khỏe & Đời sống,Tử vi 12 cung hoàng đạo ngày 24/6/2025: Xử Nữ trở nên tự tin và mạnh mẽ,non-clickbait,non-clickbait,0.062617026,0.06406543
+article_0971,Kênh14,Giải trí & Showbiz,"Nữ diễn viên Việt duy nhất đóng chính phim Hàn dài 150 tập, được cả đài quốc gia tung hô mới đáng nể",clickbait,clickbait,0.9775644,0.97706646
+article_3073,Tuổi Trẻ,Other,Đất nền ‘đu đỉnh’ sau sáp nhập tỉnh thành,clickbait,clickbait,0.5271948,0.8765816
+article_3712,24h,Sức khỏe & Đời sống,Hai căn bệnh 'đặc biệt' của quý ông có thể gây vô sinh và mất 'bản lĩnh phòng the',clickbait,clickbait,0.97840524,0.97792566
+article_2088,VietNamNet,Sức khỏe & Đời sống,Ca cấp cứu căng thẳng cho cụ ông bị nhồi máu cơ tim lúc nửa đêm,non-clickbait,non-clickbait,0.053304687,0.021105006
+article_2089,VietNamNet,Sức khỏe & Đời sống,"Không chỉ HIUP, Chitose là hàng giả quảng cáo ‘nổ’ như thế nào?",clickbait,clickbait,0.9780727,0.97543687
+article_1323,Báo Mới,Other,Giá vàng hôm nay (chiều 23-6): Giá vàng thế giới tiếp đà giảm,non-clickbait,non-clickbait,0.024821788,0.022715755
+article_2913,VietNamNet,Xe & Vận tải,"Đừng dại cho người khác mượn GPLX 'thế thân' đóng phạt nguội, có thể 'dính' hình sự",clickbait,clickbait,0.9293122,0.9406263
+article_1918,Báo Mới,Thể thao,Tân binh Man City gây ngỡ ngàng,clickbait,clickbait,0.9647889,0.9627783
+article_0164,SaoStar,Giải trí & Showbiz,Ảnh quá khứ gây bàn tán của Huyền Baby,clickbait,clickbait,0.9635062,0.9505947
+article_1485,Thanh Niên,Sức khỏe & Đời sống,"Loại trà không đắng, tốt cho tim, gan, lại chống ung thư",non-clickbait,non-clickbait,0.49946594,0.9081302
+article_0214,24h,Tin tức tổng hợp,Xôn xao thông tin người đàn ông trộm hơn 800 tờ vé số ở TPHCM,clickbait,clickbait,0.8911497,0.42797935
+article_1663,Báo Mới,Other,Trường THPT chuyên Sư phạm công bố điểm chuẩn lớp 10 năm 2025,non-clickbait,non-clickbait,0.014227046,0.015365343
+article_0302,VnExpress,Quốc tế,Cảnh đổ nát tại Israel sau đòn tập kích đáp trả của Iran,non-clickbait,non-clickbait,0.03406827,0.031888988
+article_3549,VietNamNet,Other,Bạn đọc Báo VietNamNet giúp đỡ em Đoàn Nhứt Nam liệt nửa người gần 43 triệu đồng,non-clickbait,non-clickbait,0.019456577,0.01712732
+article_0908,Thanh Niên,Other,8 nhà đầu tư chiến lược đầu tư vào khu thương mại tự do Đà Nẵng là ai?,clickbait,clickbait,0.5397566,0.65232444
+article_0768,Báo Mới,Tin tức tổng hợp,"Đảm bảo các điều kiện tốt nhất để sẵn sàng đưa bộ máy cấp tỉnh, cấp xã mới đi vào vận hành từ ngày 1-7",non-clickbait,non-clickbait,0.011530389,0.013982613
+article_2524,VnExpress,Other,Xu hướng nghề nghiệp dịch chuyển thế nào thời AI?,clickbait,clickbait,0.7773844,0.86182916
+article_1135,VnExpress,Other,Dự án Aqua City của Novaland được gỡ vướng pháp lý,non-clickbait,non-clickbait,0.026506126,0.021368887
+article_0489,24h,Quốc tế,"Hoàng đế là người hùng ở Pakistan nhưng bị xem như ""tội đồ” ở Ấn Độ",clickbait,clickbait,0.96771675,0.95945925
+article_3610,Báo Mới,Other,Một số lợi ích và hạn chế khi sử dụng lam chắn nắng mặt tiền,non-clickbait,non-clickbait,0.26990253,0.056184538
+article_3366,Tuổi Trẻ,Other,Nữ bác sĩ kịp thời cứu người bệnh trong gang tấc,non-clickbait,non-clickbait,0.12592277,0.23161423
+article_3006,Báo Mới,Công nghệ & Khoa học,Hành trình tìm lời giải cho 'đế chế' rác thải điện tử của sinh viên qua sản phẩm báo chí,non-clickbait,non-clickbait,0.40025112,0.42018318
+article_3279,VnExpress,Other,Du lịch Thái Lan - Campuchia sụt giảm khi biên giới siết chặt,non-clickbait,non-clickbait,0.021677379,0.024609929
+article_0156,SaoStar,Giải trí & Showbiz,Chia sẻ gây chú ý của Khánh Thi sau 3 năm cưới Phan Hiển,clickbait,clickbait,0.9759923,0.9724148
+article_2101,VietNamNet,Sức khỏe & Đời sống,Chánh Thanh tra Sở Y tế TPHCM nhận nhiệm vụ mới,non-clickbait,non-clickbait,0.013715874,0.0154839875
+article_1801,Thanh Niên,Giáo dục & Học đường,"Điểm chuẩn lớp 10 tỉnh Bình Thuận: Có trường chỉ 6,25 điểm/3 môn",non-clickbait,non-clickbait,0.015014747,0.016403032
+article_3631,Báo Mới,Other,Đồng chí Bí thư Tỉnh ủy làm việc tại huyện Bắc Yên và Phù Yên,non-clickbait,non-clickbait,0.0130707845,0.014842418
+article_2553,Tuổi Trẻ,Thể thao,"FIFA Club World Cup 2025 đấu lúc 12h trưa, vì sao?",clickbait,clickbait,0.94644845,0.90371984
+article_0817,Báo Mới,Other,12 trường hợp không được hưởng bảo hiểm y tế dù khám đúng tuyến,non-clickbait,non-clickbait,0.030792164,0.017259333
+article_2319,Thanh Niên,Other,45 người đẹp Hoa hậu Hoàn vũ cùng diễu hành Carnival phố biển Nha Trang,non-clickbait,non-clickbait,0.018457891,0.017143767
+article_3505,Báo Mới,Xe & Vận tải,"BMW phát triển vật liệu mới nhẹ hơn, thân thiện hơn, dần thay thế sợi carbon",non-clickbait,non-clickbait,0.05839952,0.038466193
+article_3260,Báo Mới,Other,Người phụ nữ mất con vì mắc hội chứng hiếm gặp,clickbait,clickbait,0.94433105,0.9591543
+article_1982,VnExpress,Other,Người mẫu Lê Thu Trang nhận lời cầu hôn,non-clickbait,non-clickbait,0.1455399,0.16145241
+article_2747,Báo Mới,Other,SAWACO triển khai khảo sát sự hài lòng của khách hàng đối với dịch vụ cấp nước,non-clickbait,non-clickbait,0.01877907,0.01964376
+article_1092,Báo Mới,Other,Khán giả trẻ yêu thích vở 'Gánh cỏ sông Hàn',non-clickbait,non-clickbait,0.035410725,0.04107589
+article_3164,24h,Giải trí & Showbiz,Đan Trường cảnh báo,clickbait,clickbait,0.7759446,0.9069832
+article_1375,VnExpress,Other,Tác hại của việc quay đồ nhựa trong lò vi sóng,non-clickbait,non-clickbait,0.15726623,0.14229149
+article_0468,24h,Quốc tế,Thủ tướng Israel nói sắp đạt được mục tiêu ở Iran,non-clickbait,non-clickbait,0.05198967,0.031380434
+article_3395,Thanh Niên,Other,Suzuki Fronx có đủ sức khuấy động phân khúc SUV đô thị?,non-clickbait,clickbait,0.76020586,0.6499675
+article_2777,VnExpress,Other,Món ngon từ sấu - nét ẩm thực dân dã Hà thành,non-clickbait,non-clickbait,0.41853353,0.3970029
+article_2911,VietNamNet,Xe & Vận tải,Loạt xe sang tiền tỷ giảm giá đến vài trăm triệu cuối tháng 6,non-clickbait,non-clickbait,0.37501958,0.5330329
+article_2283,Tuổi Trẻ,Giải trí & Showbiz,HIEUTHUHAI sang Pháp dự Paris Fashion Week; Tưng bừng lễ hội truyện tranh cho fan manga,non-clickbait,non-clickbait,0.07250526,0.02138932
+article_2413,24h,Other,"iPhone chưa đầy 6 triệu mạnh ăn đứt iPhone 11, camera xịn iPhone mới cũng không thể so",clickbait,clickbait,0.93941504,0.9558166
+article_0895,Thanh Niên,Kinh doanh & Kinh tế,Mưa nắng bất thường kéo dài,non-clickbait,non-clickbait,0.05449988,0.118232295
+article_2947,24h,Other,'Bom sex' Chung Lệ Đề bị chê béo tròn,clickbait,clickbait,0.91212356,0.9289907
+article_3782,24h,Du lịch & Ẩm thực,"Thảo nguyên Bùi Hui vào mùa đẹp nhất, dân mê xê dịch đổ về",non-clickbait,clickbait,0.7360213,0.52554005
+article_1591,24h,Thể thao,"Video bóng đá Đà Nẵng - SLNA: Ngược dòng ngoạn mục, hẹn đấu đội Công Phượng (V-League)",non-clickbait,non-clickbait,0.044265877,0.03461884
+article_3463,24h,Xe & Vận tải,Những SUV dưới 1 tỷ được người dùng Việt ngóng đợi,non-clickbait,clickbait,0.5801848,0.71893984
+article_3200,24h,Giải trí & Showbiz,"Britney Spears đọ dáng với con trai cao 1,91 m",non-clickbait,non-clickbait,0.46232513,0.1987631
+article_2271,Tuổi Trẻ,Giải trí & Showbiz,Việt Nam có thêm một hoa hậu quốc tế: Người đẹp Bùi Diễm Kha là Miss Culture International,non-clickbait,non-clickbait,0.01836964,0.020390792
+article_0565,VnExpress,Kinh doanh & Kinh tế,Hanwha Life Việt Nam ra mắt sản phẩm bảo hiểm mới,non-clickbait,non-clickbait,0.01745923,0.019215846
+article_0720,SaoStar,Quốc tế,"Cô dâu đột ngột sinh con sau đám cưới 2 ngày, nhà chồng từ chối nhận cháu",clickbait,clickbait,0.97223073,0.96975684
+article_0048,VnExpress,Tin tức tổng hợp,Hà Nội phá dỡ 'Hàm cá mập',non-clickbait,non-clickbait,0.03598218,0.02878888
+article_0419,Kênh14,Thể thao,"Quá khứ ít biết của thiếu gia nghìn tỷ nhà bầu Hiển: Làm bồi bàn kiếm tiền, mọi thứ đều tự bươn chải",non-clickbait,clickbait,0.9609151,0.9735945
+article_2996,Báo Mới,Công nghệ & Khoa học,"Ai là người nuôi cá: Câu đố huyền thoại của Einstein chỉ có 2% dân số đủ thông minh để giải được, còn bạn thì sao?",clickbait,clickbait,0.97782,0.97436166
+article_2325,Thanh Niên,Other,NSƯT Xuân Bắc ‘Tôi thích ăn phở’,non-clickbait,clickbait,0.58067906,0.37039617
+article_0882,Tuổi Trẻ,Kinh doanh & Kinh tế,Phó thủ tướng Nguyễn Hòa Bình: Khu thương mại tự do Đà Nẵng là đầu tiên nhưng phải chắc thắng,non-clickbait,non-clickbait,0.01317195,0.014364657
+article_2705,Báo Mới,Công nghệ & Khoa học,"Trung Quốc ra mắt vũ khí laser di động 2,47kW, có thể triển khai từ Bắc Cực đến sa mạc Sahara",non-clickbait,non-clickbait,0.02704047,0.018959863
+article_2576,Thanh Niên,Giải trí & Showbiz,‘Nữ hoàng wushu’ Thúy Hiền: Tôi dập tắt ước mơ ca hát của con khi ly hôn Tú Dưa,clickbait,clickbait,0.8346092,0.8127931
+article_1652,Báo Mới,Giáo dục & Học đường,Tặng nhiều phần quà cho người nghèo và học sinh khó khăn huyện Chư Sê,non-clickbait,non-clickbait,0.016482,0.018671406
+article_1186,Tuổi Trẻ,Công nghệ & Khoa học,Cách vượt qua 'người gác cổng' AI khi tìm việc,clickbait,clickbait,0.96765566,0.95880854
+article_0910,Thanh Niên,Other,Giá USD hôm nay 22.6.2025: Tăng vọt lên đỉnh mới,non-clickbait,non-clickbait,0.028355205,0.020547435
+article_3171,24h,Giải trí & Showbiz,Nam diễn viên thất bại nhất Trung Quốc năm 2025,clickbait,clickbait,0.9119669,0.56750226
+article_2276,Tuổi Trẻ,Giải trí & Showbiz,Nghệ sĩ dương cầm của tiếng cười,non-clickbait,clickbait,0.89478946,0.68452775
+article_1207,Thanh Niên,Other,"Thời tiết TP.HCM mát mẻ đầu tuần, mưa lớn khi nào quay lại?",clickbait,clickbait,0.76951355,0.6064402
+article_2112,SaoStar,Giáo dục & Học đường,37 tuổi vẫn được đút cơm: Bi kịch của người đàn ông được nuông chiều quá mức,clickbait,clickbait,0.97583157,0.9748691
+article_1944,Báo Mới,Thể thao,Bế mạc Giải pickleball gia đình Điện Biên năm 2025,non-clickbait,non-clickbait,0.015072629,0.018055337
+article_1312,24h,Kinh doanh & Kinh tế,"Loạt ô tô tiếp tục giảm giá, có mẫu giảm lên tới hơn 370 triệu đồng",clickbait,non-clickbait,0.14786252,0.08441725
+article_0853,VnExpress,Công nghệ & Khoa học,Tên lửa Starship phát nổ trước thử nghiệm lần thứ 10,non-clickbait,non-clickbait,0.053948976,0.01798621
+article_0779,Báo Mới,Tin tức tổng hợp,Ủy ban Nhà nước về người Việt Nam ở nước ngoài đã gắn kết hơn 6 triệu kiều bào,non-clickbait,non-clickbait,0.020138742,0.016561339
+article_3688,24h,Tin tức tổng hợp,"Bắt Viện trưởng Pháp y tâm thần Trung ương ăn hối lộ trong nhiều vụ ""chạy"" kết luận giám định",non-clickbait,non-clickbait,0.023419945,0.024099447
+article_2624,VietNamNet,Chính trị & An ninh,Sự cẩu thả của hai người đàn ông khiến 8 người mất mạng,clickbait,clickbait,0.9252299,0.86737317
+article_0023,VnExpress,Tin tức tổng hợp,VnExpress đoạt hai giải tại Hội Báo toàn quốc 2025,non-clickbait,non-clickbait,0.012624949,0.012053779
+article_3033,VnExpress,Other,Cubing - 'siêu xe' đắt giá nhất VinFast từng làm,non-clickbait,clickbait,0.97587764,0.96641046
+article_0501,Báo Mới,Quốc tế,Đất hiếm và công nghệ: 2 mặt trận trong đối đầu Mỹ - Trung,non-clickbait,non-clickbait,0.28726768,0.05556634
+article_1558,SaoStar,Thể thao,Chia tay bầu Đức bằng sự tử tế,non-clickbait,clickbait,0.6781671,0.48930618
+article_2809,Tuổi Trẻ,Giáo dục & Học đường,New Zealand trao học bổng Chính phủ dành riêng cho học sinh trung học Việt Nam,non-clickbait,non-clickbait,0.013888677,0.013861953
+article_2421,24h,Other,"iPhone màn OLED xịn như iPhone 16, hiệu năng hàng top phân khúc tầm trung",clickbait,non-clickbait,0.35883036,0.13240233
+article_0594,VnExpress,Kinh doanh & Kinh tế,Công ty phục vụ mặt đất Sài Gòn giảm lãi khi ngừng hợp đồng với Vietjet,non-clickbait,non-clickbait,0.019087432,0.017143767
+article_2618,VietNamNet,Chính trị & An ninh,Danh sách cán bộ nhận 71 tỷ đồng hối lộ để thuốc được 'tuồn êm' vào bệnh viện,non-clickbait,non-clickbait,0.09401019,0.08035747
+article_1363,Báo Mới,Other,"PGBank bổ nhiệm Phó Tổng Giám đốc mới, chuẩn bị họp ĐHĐCĐ bất thường",non-clickbait,non-clickbait,0.015232935,0.01668906
+article_1128,VnExpress,Other,Nhà phố thương mại Thủ Thiêm giá gần một tỷ đồng mỗi m2,non-clickbait,non-clickbait,0.020567097,0.023734689
+article_2856,Thanh Niên,Other,"HLV Trần Minh Chiến tiếp tục không dự họp báo, tương lai CLB Bình Định bấp bênh, mơ hồ…",clickbait,non-clickbait,0.48766574,0.35050473
+article_1096,Báo Mới,Other,Làm báo Mặt trận,clickbait,non-clickbait,0.24517536,0.7418144
+article_3261,Báo Mới,Other,Nên ăn bao nhiêu quả vải mỗi ngày?,clickbait,clickbait,0.85633236,0.8367548
+article_0104,Thanh Niên,Other,Không gian văn hóa Hồ Chí Minh - Dấu ấn sáng tạo của Hội Liên hiệp phụ nữ TP.Đà Lạt,non-clickbait,non-clickbait,0.018671406,0.014785408
+article_2269,Tuổi Trẻ,Giải trí & Showbiz,"Fan Việt gây sốt khi được DPR Ian hôn tay, hỏi thăm ngọt ngào; Ninh Dương Lan Ngọc ngồi xe lăn?",clickbait,clickbait,0.9651191,0.979354
+article_0592,VnExpress,Kinh doanh & Kinh tế,Tập đoàn HP muốn mở rộng chuỗi cung ứng ở Việt Nam,non-clickbait,non-clickbait,0.023065226,0.018582148
+article_3094,Thanh Niên,Other,Lỗi 'ngớ ngẩn' trên Apple Maps gây nguy hiểm cho người dùng,clickbait,clickbait,0.97887486,0.9747491
+article_1617,24h,Thể thao,Lịch thi đấu bóng đá CLB Real Madrid mới nhất,non-clickbait,non-clickbait,0.03722176,0.029035643
+article_0625,Thanh Niên,Quốc tế,"Sau khi không kích Iran, Mỹ lo bị 'đặc vụ nằm vùng' tấn công khủng bố",non-clickbait,non-clickbait,0.36670312,0.41294438
+article_2502,VnExpress,Other,Công trình tôn giáo lớn nhất thế giới ở Campuchia tên là gì?,clickbait,clickbait,0.9129808,0.91505283
+article_0918,Thanh Niên,Kinh doanh & Kinh tế,"Phan Rang Center - Câu chuyện từ vị trí, góp sức thành biểu tượng",non-clickbait,non-clickbait,0.05404875,0.13095081
+article_2067,Thanh Niên,Chính trị & An ninh,Bất động sản du lịch,clickbait,non-clickbait,0.09730459,0.8347439
+article_1520,VietNamNet,Quốc tế,"Mỹ dùng 6 quả bom phá boongke, 30 tên lửa Tomahawk tấn công Iran",non-clickbait,non-clickbait,0.022955455,0.015588541
+article_3001,Báo Mới,Công nghệ & Khoa học,Động vật 'tự chữa lành' mở ra hy vọng cho y học tái tạo,non-clickbait,clickbait,0.9235924,0.85250616
+article_0303,VnExpress,Quốc tế,Campuchia đóng hai cửa khẩu với Thái Lan,non-clickbait,non-clickbait,0.022053318,0.017831627
+article_3766,24h,Du lịch & Ẩm thực,H'Hen Niê bế bụng bầu thăm phố cổ Đài Loan cùng chồng,non-clickbait,non-clickbait,0.042682283,0.024821788
+article_0290,VnExpress,Quốc tế,Các nước lên tiếng về cuộc không kích của Mỹ vào Iran,non-clickbait,non-clickbait,0.034326304,0.022521457
+article_1510,VietNamNet,Quốc tế,"Ukraine khiến Moscow thiệt hại hơn 10 tỷ USD, Nga đột phá ở Donetsk",non-clickbait,non-clickbait,0.034749627,0.020626195
+article_2706,Báo Mới,Other,Thương hiệu 'Ăn cùng Bà Tuyết' lên tiếng chính thức sau thông tin giải thể công ty,non-clickbait,clickbait,0.648355,0.75797355
+article_2988,Báo Mới,Công nghệ & Khoa học,Thêm mối đe dọa đến các rạn san hô trên thế giới,non-clickbait,non-clickbait,0.04894862,0.05613278
+article_0627,Thanh Niên,Quốc tế,145 người bị đâm kim tiêm tại lễ hội âm nhạc Pháp,non-clickbait,non-clickbait,0.04352814,0.018089995
+article_3485,Báo Mới,Xe & Vận tải,Hệ thống hỗ trợ lái xe trong sương mù hoạt động ra sao?,non-clickbait,clickbait,0.8175016,0.6493563
+article_2242,VnExpress,Other,Phút cân não di dời hai ngôi mộ giả 'mọc' trên đất phải thi hành án,non-clickbait,clickbait,0.8267118,0.8515212
+article_1090,Báo Mới,Other,Cách làm muối ớt tôm Tây Ninh tại nhà chấm gì cũng ngon,non-clickbait,non-clickbait,0.32541335,0.31478733
+article_1886,SaoStar,Sức khỏe & Đời sống,Chủ động tầm soát ung thư phổi từ sớm để không bỏ lỡ 'thời gian vàng' điều trị,clickbait,clickbait,0.5034675,0.44470042
+article_1665,Báo Mới,Giáo dục & Học đường,Cô trò trường dân tộc nội trú ở Nghệ An sáng đèn ôn thi tốt nghiệp THPT,non-clickbait,non-clickbait,0.03850233,0.01660912
+article_3206,24h,Giải trí & Showbiz,Johnny Trí Nguyễn nặng lòng với phim về sử Việt,non-clickbait,non-clickbait,0.0910987,0.06136777
+article_1998,VnExpress,Other,Gu mặc của 'Tài tử đẹp trai nhất thế giới',clickbait,clickbait,0.7662062,0.90540594
+article_0599,VnExpress,Kinh doanh & Kinh tế,'Đồng bào ở nước ngoài rất phấn khởi khi được mời về làm ở trung tâm tài chính Việt Nam',non-clickbait,non-clickbait,0.02479816,0.030821325
+article_1347,Báo Mới,Other,Lãi suất VND liên ngân hàng các kỳ hạn chủ chốt thấp nhất 1 năm,non-clickbait,non-clickbait,0.020468965,0.03173859
+article_3656,24h,Giải trí & Showbiz,Triệt xóa sòng bạc 'ẩn mình' trên đồi quế,clickbait,non-clickbait,0.46705163,0.62535226
+article_2938,SaoStar,Du lịch & Ẩm thực,Trầm trồ trước vẻ đẹp của 2 con đường 'rẽ nước đi bộ xuyên biển' ở Việt Nam,clickbait,clickbait,0.9579909,0.90217954
+article_0341,Tuổi Trẻ,Quốc tế,"Tình báo, công nghệ và chiến tranh thời hiện đại",non-clickbait,non-clickbait,0.032713126,0.030646777
+article_1464,Thanh Niên,Sức khỏe & Đời sống,"Tưởng táo bón do ăn thiếu chất xơ, không ngờ là ung thư đại tràng",non-clickbait,clickbait,0.9427707,0.9635062
+article_2037,Thanh Niên,Other,Cháo lòng Việt Nam trong danh sách món cháo ngon nhất châu Á,non-clickbait,non-clickbait,0.079281576,0.041191436
+article_3128,VietNamNet,Other,Dự án 1.700 tỷ 'đắp chiếu' nhiều năm ở Kon Tum đổi chủ: Trơ sắt thép dưới thời tiết khắc nghiệt,clickbait,clickbait,0.83642095,0.5648225
+article_3183,24h,Giải trí & Showbiz,Cách Brad Pitt làm lại cuộc đời,clickbait,clickbait,0.9185533,0.8791986
+article_0142,Kênh14,Sức khỏe & Đời sống,"Người đứng sau ""đế chế ăn vặt"" - Ăn Cùng Bà Tuyết vừa thông báo giải thể LÀ AI, GIÀU CỠ NÀO mà đóng thuế thu nhập hàng trăm triệu đồng?",clickbait,clickbait,0.9796871,0.9782396
+article_1278,SaoStar,Giải trí & Showbiz,Thực hư 'The Batman 2' bị hủy hay chỉ là lời đồn thất thiệt khiến fan đứng ngồi không yên?,clickbait,clickbait,0.97826034,0.97782
+article_3115,Thanh Niên,Other,Thông tấn xã Việt Nam ra mắt chuyên trang thông tin đa phương tiện,non-clickbait,non-clickbait,0.013584392,0.014842418
+article_3293,VnExpress,Other,Sắc đỏ của tiếp viên hàng không Vietjet nổi bật tại Paris Air Show 2025,non-clickbait,non-clickbait,0.028571246,0.020725062
+article_0885,Tuổi Trẻ,Kinh doanh & Kinh tế,"4 'ông lớn' cho vay hơn 7,1 triệu tỉ đồng, xuất hiện nỗi lo phía sau chuyện tăng tín dụng",clickbait,clickbait,0.94600123,0.9571178
+article_3295,VnExpress,Other,Báo nước ngoài chọn ba điểm đến Việt Nam vào top Đông Nam Á,non-clickbait,non-clickbait,0.026632411,0.022846198
+article_1026,24h,Kinh doanh & Kinh tế,Cục Thuế lưu ý khi số định danh cá nhân thay mã số thuế từ 1-7,non-clickbait,non-clickbait,0.017292492,0.013428255
+article_2081,VietNamNet,Sức khỏe & Đời sống,5 loại trái cây mùa hè tốt nhất,clickbait,clickbait,0.9016612,0.88548297
+article_1819,Thanh Niên,Giáo dục & Học đường,Mỹ sắp cấp lại lịch phỏng vấn visa cho du học sinh Việt Nam,non-clickbait,non-clickbait,0.018599968,0.0151307285
+article_1358,Báo Mới,Kinh doanh & Kinh tế,Hàng không Việt Nam sẽ mua tín chỉ carbon từ năm 2026,non-clickbait,non-clickbait,0.015087132,0.01745923
+article_3141,VietNamNet,Other,Bình Dương có khu công nghiệp cơ khí đầu tiên rộng gần 800ha,non-clickbait,non-clickbait,0.019587422,0.018635655
+article_2313,Thanh Niên,Other,'Phù thủy' của những món đồ tái chế,clickbait,clickbait,0.9043975,0.9658996
+article_1170,Tuổi Trẻ,Công nghệ & Khoa học,Làm việc hybrid working sao cho hiệu quả?,non-clickbait,clickbait,0.7550956,0.77141327
+article_1064,Báo Mới,Văn hóa & Nghệ thuật,Đặc sắc nghề dệt thổ cẩm truyền thống của người M'nông,non-clickbait,non-clickbait,0.044722572,0.039564554
+article_3253,Báo Mới,Other,Sốt xuất huyết Dengue: Nguy kịch vì chủ quan,non-clickbait,non-clickbait,0.29670522,0.23642808
+article_0871,VnExpress,Công nghệ & Khoa học,"Cách laptop AI hỗ trợ sinh viên, dân văn phòng",non-clickbait,non-clickbait,0.06307716,0.08791558
+article_2028,Thanh Niên,Other,Đừng bao giờ sử dụng 'hố đen tuyệt vọng' trên ghế máy bay,clickbait,clickbait,0.9715909,0.9650863
+article_1866,SaoStar,Sức khỏe & Đời sống,"Món rau dân dã giá vài nghìn đồng nhưng mát từ gan tới da, dinh dưỡng cực tốt",clickbait,clickbait,0.9743861,0.9701269
+article_1051,Báo Mới,Other,"'Xuyên không' ở ngôi làng nhiều nhà trăm tuổi, cổ vật quý, cách TPHCM 110km",non-clickbait,clickbait,0.8962514,0.9265035
+article_2692,24h,Other,"Đàm Thu Trang chít khăn như cụ bà, Quế Vân hở bạo đi xem G-Dragon",clickbait,clickbait,0.5507282,0.7216451
+article_0101,Thanh Niên,Chính trị & An ninh,Từ nhà nước 'quản lý' tới nhà nước 'phục vụ',non-clickbait,non-clickbait,0.103159875,0.10370323
+article_1760,Tuổi Trẻ,Du lịch & Ẩm thực,Cho bắn pháo hoa tầm cao tại Bạc Liêu và Cà Mau mừng sự kiện hợp nhất tỉnh,non-clickbait,non-clickbait,0.011961099,0.012194132
+article_0469,24h,Quốc tế,Các cơ sở hạt nhân Iran chịu thiệt hại lớn đến mức nào sau đòn không kích dữ dội của Mỹ?,clickbait,clickbait,0.9302684,0.87831426
+article_0204,24h,Tin tức tổng hợp,"Nguyên cán bộ công an yêu cầu VKS bồi thường 8,8 tỷ đồng vì bị oan 42 năm",non-clickbait,non-clickbait,0.02693789,0.017865866
+article_0148,SaoStar,Giải trí & Showbiz,Nam diễn viên nổi tiếng xin lỗi vì hẹn hò 7 cô gái cùng lúc,clickbait,clickbait,0.9743129,0.95136863
+article_1775,Tuổi Trẻ,Du lịch & Ẩm thực,"Lào Cai - Yên Bái sáp nhập, đã Sa Pa còn thêm Mù Cang Chải, đẹp ai chịu nổi?!",clickbait,clickbait,0.962462,0.9190633
+article_0900,Thanh Niên,Other,Giá USD hôm nay 23.6.2025: Giảm từ mức kỷ lục,non-clickbait,non-clickbait,0.029507361,0.020665688
+article_0462,24h,Quốc tế,Quốc tế lên tiếng sau vụ Mỹ tấn công Iran,non-clickbait,non-clickbait,0.10275401,0.07913913
+article_2303,Thanh Niên,Văn hóa & Nghệ thuật,Khánh thành công trình tôn tạo di tích Trường dạy làm báo Huỳnh Thúc Kháng,non-clickbait,non-clickbait,0.015739111,0.014629741
+article_0672,VietNamNet,Kinh doanh & Kinh tế,"Ưu đãi dành cho hộ kinh doanh, tiểu thương sử dụng Loa TingTing PVcomBank",non-clickbait,non-clickbait,0.017492766,0.021718835
+article_2814,Tuổi Trẻ,Giáo dục & Học đường,PGS.TS Bùi Huy Nhượng là tân giám đốc Đại học Kinh tế quốc dân,non-clickbait,non-clickbait,0.017543187,0.01627746
+article_2361,VietNamNet,Công nghệ & Khoa học,Hệ thống tiêu chuẩn an ninh mạng sẽ thiết lập bảo vệ hạ tầng thông tin trọng yếu,non-clickbait,non-clickbait,0.016833907,0.020023441
+article_1122,VnExpress,Other,Thaco được chấp thuận đầu tư khu công nghiệp cơ khí 786 ha tại Bình Dương,non-clickbait,non-clickbait,0.015799738,0.016230615
+article_3098,Thanh Niên,Other,Những thiết bị Apple tân trang đáng mua,non-clickbait,clickbait,0.8060142,0.36900237
+article_0690,VietNamNet,Kinh doanh & Kinh tế,"Tasco bầu phó chủ tịch hội đồng quản trị, tổng giám đốc mới",non-clickbait,non-clickbait,0.018055337,0.019105727
+article_0513,Báo Mới,Quốc tế,Căng thẳng Israel-Iran: Các hãng hàng không toàn cầu tránh khu vực Trung Đông,non-clickbait,non-clickbait,0.024492992,0.021044565
+article_3706,24h,Sức khỏe & Đời sống,"Ăn nhiều thịt có hại thận không, người bị suy thận cần lưu ý gì?",clickbait,clickbait,0.93077356,0.9433998
+article_3714,24h,Sức khỏe & Đời sống,"Đau bụng kéo dài hơn 10 năm, người phụ nữ phát hiện căn bệnh ít ai nghĩ tới",clickbait,clickbait,0.97796774,0.9777564
+article_0313,VnExpress,Quốc tế,Nguy cơ thảm họa nhân đạo từ xung đột Israel - Iran,non-clickbait,non-clickbait,0.041617792,0.0279544
+article_1985,VnExpress,Other,Song Hye Kyo gây 'sốt' với loạt ảnh ở Tây Ban Nha,clickbait,clickbait,0.9656413,0.9649544
+article_1867,SaoStar,Sức khỏe & Đời sống,5 thói quen buổi sáng âm thầm 'nuôi' bệnh ung thư mà bạn không biết,clickbait,clickbait,0.9761519,0.974018
+article_2342,VietNamNet,Công nghệ & Khoa học,"Kế hoạch hành động triển khai Nghị quyết 57: Tổng thể, thống nhất và đồng bộ",non-clickbait,non-clickbait,0.014573536,0.016593179
+article_0181,24h,Tin tức tổng hợp,"Hai cô gái bị nam thanh niên chặn xe, hành hung giữa đường",non-clickbait,non-clickbait,0.22499062,0.11716748
+article_0216,24h,Quốc tế,Người nước ngoài tìm cách rời khỏi Israel,non-clickbait,non-clickbait,0.021718835,0.04733772
+article_3795,24h,Giáo dục & Học đường,"Đại biểu chất vấn Bộ trưởng GD-ĐT về giải pháp chấm dứt ""kỳ thi kinh hoàng"" vào lớp 10",non-clickbait,non-clickbait,0.19019704,0.1126489
+article_2906,VietNamNet,Xe & Vận tải,"Huawei ‘phá đảo’ cuộc đua pin xe điện: Sạc 5 phút, chạy 3.000km",clickbait,clickbait,0.9315248,0.9642878
+article_0167,SaoStar,Giải trí & Showbiz,Huỳnh Hiểu Minh đón nhận tin ngoài ý muốn,clickbait,clickbait,0.96309197,0.7258916
+article_0114,VietNamNet,Chính trị & An ninh,"Hưng Yên chỉ định chủ tịch, phó chủ tịch 39 xã, phường mới",non-clickbait,non-clickbait,0.016898682,0.016418796
+article_0546,Báo Mới,Quốc tế,"Tin thế giới ngày 23-6: Mỹ ra tay, Iran còn lựa chọn nào trên bàn cờ chiến lược?",clickbait,clickbait,0.8700462,0.59763724
+article_0051,Tuổi Trẻ,Tin tức tổng hợp,Thử nghiệm phần mềm một cửa điện tử ở Đồng Nai: Chưa liên thông được dữ liệu với bộ ngành,non-clickbait,non-clickbait,0.016593179,0.01461567
+article_0640,Thanh Niên,Quốc tế,"Nga, Trung Quốc, Thổ Nhĩ Kỳ phản ứng mạnh vụ Mỹ tấn công Iran",non-clickbait,non-clickbait,0.03465149,0.021885455
+article_1756,VnExpress,Thể thao,Yamal nghỉ hè cùng Neymar,non-clickbait,non-clickbait,0.058131594,0.08336651
+article_2834,Thanh Niên,Thể thao,Highlight CLB Long An 2-1 CLB Hòa Bình: Chiến thắng ngọt ngào phút bù giờ,non-clickbait,non-clickbait,0.033462934,0.046076804
+article_2960,24h,Other,Song Hye Kyo bùng nổ nhan sắc,clickbait,clickbait,0.8037136,0.89209336
+article_3049,VnExpress,Other,VinFast tổ chức đổi xe xăng lấy xe máy điện,non-clickbait,non-clickbait,0.022264916,0.016705096
+article_0809,Báo Mới,Other,"Chấn chỉnh đấu thầu thuốc, thiết bị BHYT",non-clickbait,non-clickbait,0.019289603,0.015424551
+article_1293,SaoStar,Giải trí & Showbiz,Lâm Giang Tiên làm giả số liệu?,clickbait,clickbait,0.96631527,0.92886186
+article_0653,Thanh Niên,Other,Cơ sở hạt nhân Iran thách thức cả loại bom phá boongke mạnh nhất của Mỹ,non-clickbait,non-clickbait,0.11250255,0.07323097
+article_1846,VietNamNet,Sức khỏe & Đời sống,"Chủ gara ô tô người Hàn si mê cô gái Việt, từ bỏ sự nghiệp để ‘sống vì tình yêu’",clickbait,clickbait,0.9548163,0.95230865
+article_3615,Báo Mới,Other,Trà Vinh vận hành thử mô hình chính quyền địa phương 2 cấp,non-clickbait,non-clickbait,0.0122885965,0.013715874
+article_3383,Thanh Niên,Other,Xe điện VinFast hút khách tham quan Triển lãm Automechanika 2025,non-clickbait,non-clickbait,0.01781453,0.01392886
+article_1721,VnExpress,Thể thao,Fluminense 4-2 Ulsan Huyndai,non-clickbait,non-clickbait,0.0252749,0.023962025
+article_2649,SaoStar,Công nghệ & Khoa học,Kay Trần: “Redmi Note 14 Series Vàng Sa Mạc là người bạn đồng hành phong cách cho mùa hè xê dịch”,non-clickbait,non-clickbait,0.0946777,0.09577148
+article_2599,Thanh Niên,Other,Nhan sắc đời thường của tân Hoa hậu Hoàn vũ Việt Nam,clickbait,non-clickbait,0.10516459,0.15514246
+article_3647,Báo Mới,Other,Thanh Hóa tiếp tục chấn chỉnh hoạt động đấu giá đất,non-clickbait,non-clickbait,0.15533455,0.016513688
+article_2263,VnExpress,Other,"Cầm cố ôtô bằng giấy tờ giả, chiếm đoạt hơn 5 tỷ đồng",non-clickbait,non-clickbait,0.04681203,0.036908068
+article_1509,VietNamNet,Quốc tế,Tướng Mỹ tiết lộ kế hoạch 'đánh lạc hướng' để tấn công Iran,non-clickbait,clickbait,0.60296786,0.52321863
+article_1700,VnExpress,Thể thao,Malaysia góp mặt ở giải đấu có hai đội dự World Cup,non-clickbait,non-clickbait,0.024099447,0.046378206
+article_0022,VnExpress,Tin tức tổng hợp,"Đà Nẵng đề xuất thử nghiệm tài sản số, tiền số",non-clickbait,non-clickbait,0.01665704,0.017509557
+article_2808,Tuổi Trẻ,Giáo dục & Học đường,"Nam sinh Bắc Ninh đạt 1.600 SAT, có IELTS 8.0 từ lớp 11",non-clickbait,non-clickbait,0.031143833,0.019946935
+article_0004,VnExpress,Tin tức tổng hợp,Quy hoạch 9 khu chức năng phía đông TP HCM,non-clickbait,non-clickbait,0.01660912,0.02017732
+article_0218,24h,Quốc tế,Tiết lộ vai trò của Israel trong chiến dịch Mỹ dội bom chưa từng có vào cơ sở hạt nhân Iran,clickbait,clickbait,0.82782817,0.39294818
+article_2620,VietNamNet,Chính trị & An ninh,Chủ chung cư mini bị cháy khiến 56 người thiệt mạng ở Hà Nội được giảm án,non-clickbait,non-clickbait,0.033462934,0.024987794
+article_0274,Báo Mới,Thể thao,Tottenham chính thức bổ nhiệm thuyền trưởng mới,non-clickbait,non-clickbait,0.095602475,0.06412401
+article_3536,VietNamNet,Other,Trao hơn 83 triệu đồng đến em Phan Thuý An bị tai nạn phải phẫu thuật 12 lần,non-clickbait,non-clickbait,0.032961246,0.018246775
+article_0977,SaoStar,Giải trí & Showbiz,Chính thức ấn định thời điểm BLACKPINK ra mắt bài hát mới,non-clickbait,non-clickbait,0.19406216,0.33796784
+article_1727,VnExpress,Thể thao,Rangnick: 'Man Utd gặp vấn đề về người lãnh đạo',non-clickbait,non-clickbait,0.17377841,0.17419945
+article_1615,24h,Thể thao,Kết quả V-League - Giải Bóng đá Vô địch Quốc gia Việt Nam mới nhất,non-clickbait,non-clickbait,0.03497965,0.023734689
+article_2976,Báo Mới,Công nghệ & Khoa học,Tín hiệu radio đặc biệt 'mở cổng' thế giới hơn 13 tỉ năm trước,clickbait,clickbait,0.972336,0.9740426
+article_2703,24h,Other,Sắc vóc con gái cựu vận động viên Thúy Hiền,non-clickbait,non-clickbait,0.07362963,0.055412795
+article_1125,VnExpress,Other,Điều chỉnh quy hoạch Izumi City tạo lực đẩy kinh doanh cho Nam Long,non-clickbait,non-clickbait,0.017763345,0.022307476
+article_0323,VnExpress,Quốc tế,Thủ tướng Israel: Con tôi phải hoãn cưới hai lần vì các vụ tấn công,non-clickbait,non-clickbait,0.11362877,0.02931223
+article_1477,Thanh Niên,Sức khỏe & Đời sống,3 loại nước detox buổi sáng giúp giảm cân tự nhiên,non-clickbait,clickbait,0.928668,0.9250271
+article_1541,SaoStar,Thể thao,Chủ tịch CLB Hải Phòng lên tiếng về tin HLV Chu Đình Nghiêm chia tay,clickbait,non-clickbait,0.47423548,0.13290796
+article_1671,Báo Mới,Other,Thi vào lớp 10 ở TPHCM: Không có thí sinh đạt điểm 10 môn Ngữ văn,non-clickbait,non-clickbait,0.01601375,0.016914913
+article_3257,Báo Mới,Other,Người phụ nữ 33 tuổi mất con ở tuần 26 vì nguyên nhân hiếm gặp,clickbait,clickbait,0.9060729,0.9627082
+article_1582,24h,Thể thao,Real Madrid thoát hiểm trước Pachuca: Alonso không hài lòng với thẻ đỏ của Asencio,non-clickbait,non-clickbait,0.15354918,0.07382971
+article_2099,VietNamNet,Sức khỏe & Đời sống,Điểm thay đổi mức đóng BHYT hộ gia đình hàng chục triệu người tham gia cần biết,non-clickbait,clickbait,0.8057851,0.42863694
+article_2171,Báo Mới,Giải trí & Showbiz,Những món quà độc lạ tại lễ nhận bằng tốt nghiệp đại học,clickbait,clickbait,0.9406263,0.9441254
+article_0624,Thanh Niên,Other,Nga không kích dữ dội vào Kyiv sau lời đe dọa của Tổng tư lệnh Ukraine,non-clickbait,non-clickbait,0.0434875,0.036700353
+article_1442,Tuổi Trẻ,Xe & Vận tải,"Tranh cãi: Ô tô đi đổ xăng, khách hay nhân viên trạm xăng phải mở nắp bình?",clickbait,clickbait,0.96354055,0.9610981
+article_0427,SaoStar,Sức khỏe & Đời sống,Vụ bộ xương người trong bồn chứa nước: Tìm thấy manh mối tại hiện trường,non-clickbait,non-clickbait,0.089693524,0.22988081
+article_1001,SaoStar,Giải trí & Showbiz,Jennie 'đấu tranh' vì album RUBY: 'Không phải sản phẩm để chiều lòng thị trường',clickbait,clickbait,0.9535786,0.94402224
+article_3245,Báo Mới,Sức khỏe & Đời sống,"XSHN 23/6, trực tiếp kết quả xổ số Hà Nội hôm nay 23/6/2025",non-clickbait,non-clickbait,0.020527788,0.016737208
+article_0074,Thanh Niên,Tin tức tổng hợp,Bác Hồ ra báo Thanh Niên,non-clickbait,non-clickbait,0.039342504,0.049589027
+article_3611,Báo Mới,Other,TP HCM: Thu gom rác như thế nào khi thực hiện chính quyền địa phương 2 cấp?,non-clickbait,non-clickbait,0.07892588,0.1742697
+article_1597,24h,Thể thao,"Arnold ra mắt Real: Mũi khoan chất lượng cho Alonso, cẩn thận ""con dao 2 lưỡi""",clickbait,clickbait,0.88353777,0.6830496
+article_0604,VnExpress,Kinh doanh & Kinh tế,Mỏ cát ở Quảng Nam được trả gấp 105 lần mức khởi điểm sau đấu giá,non-clickbait,non-clickbait,0.036322463,0.02753294
+article_0356,Thanh Niên,Tin tức tổng hợp,Bộ Công an tìm bị hại vụ lừa đảo núp bóng quà tặng y tế,non-clickbait,non-clickbait,0.018387254,0.013663133
+article_3045,VnExpress,Other,Xe tải vượt ẩu ép xe đúng chiều vào lề,non-clickbait,non-clickbait,0.08826861,0.042802148
+article_1152,VnExpress,Other,Động lực cho thị trường căn hộ cao cấp Hải Phòng,non-clickbait,non-clickbait,0.030185984,0.024168445
+article_0029,VnExpress,Tin tức tổng hợp,Ngôi nhà ở Chợ Lớn có 3 hầm bí mật để in báo cách mạng,non-clickbait,non-clickbait,0.038285997,0.02571159
+article_3518,Tuổi Trẻ,Other,"Lắp rào chắn trên đường Võ Chí Công, Phạm Văn Đồng gây ùn tắc, lãnh đạo Sở Xây dựng Hà Nội nói gì?",non-clickbait,clickbait,0.8961605,0.90448195
+article_2905,VietNamNet,Xe & Vận tải,Tài xế 'say vắt lưỡi' vẫn cố lái xe chạy trốn cảnh sát và cái kết,clickbait,clickbait,0.9716448,0.9695556
+article_3047,VnExpress,Other,Xe điện áp đảo doanh số phân khúc CUV cỡ B,non-clickbait,non-clickbait,0.024122424,0.021969227
+article_0758,Báo Mới,Other,Miền Bắc sắp đón 'tin vui' thời tiết sau chuỗi ngày mưa to sầm sập,non-clickbait,clickbait,0.93195957,0.93941504
+article_1450,Thanh Niên,Sức khỏe & Đời sống,Giữ thận khỏe mạnh: 4 món cần tránh!,clickbait,clickbait,0.9734938,0.96975684
+article_3462,24h,Xe & Vận tải,"Clip: Vào cua bất cẩn, thanh niên đâm trúng gà rồi ngã sõng soài giữa đường",non-clickbait,clickbait,0.8637942,0.86776584
+article_1434,Tuổi Trẻ,Xe & Vận tải,"Lắp trụ sạc V-Green tại nhà, chủ xe VinFast chia sẻ: 'Chi phí 15 triệu, thu được 1,2 triệu/tháng'",non-clickbait,non-clickbait,0.39271528,0.6393984
+article_1356,Báo Mới,Other,Tinh giản biên chế: Những người được hưởng chính sách khi chuyển công tác,non-clickbait,non-clickbait,0.018582148,0.019014435
+article_0327,Tuổi Trẻ,Kinh doanh & Kinh tế,"Không phận Trung Đông 'trắng trơn', các hãng bay thêm nỗi lo giá dầu tăng",non-clickbait,non-clickbait,0.4845325,0.86652833
+article_2785,VnExpress,Other,8 sự thật về cơ thể có thể bạn chưa biết,clickbait,clickbait,0.9659317,0.9642206
